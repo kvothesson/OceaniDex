@@ -623,7 +623,7 @@ class BiodiversityAnalyzerFixed:
     
     def save_fixed_results(self, species_data: List[Dict[str, Any]], 
                           taxonomy_data: Dict[str, Any], 
-                          output_file: str = "biodiversity_results_fixed.json"):
+                          output_file: str = "biodiversity_results.json"):
         """Guardar resultados corregidos en archivo JSON."""
         results = {
             "metadata": {
@@ -642,11 +642,11 @@ class BiodiversityAnalyzerFixed:
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(results, f, ensure_ascii=False, indent=2)
         
-        print(f"✅ Resultados corregidos guardados en: {output_file}")
+        print(f"✅ Resultados guardados en: {output_file}")
     
-    def analyze_biodiversity_fixed(self, subtitles_file: str = "subtitulos_espanol.txt"):
+    def analyze_biodiversity(self, subtitles_file: str = "subtitulos_espanol.txt"):
         """Analizar biodiversidad con timestamps corregidos."""
-        print("🔍 Iniciando análisis corregido de biodiversidad marina...")
+        print("🔍 Iniciando análisis de biodiversidad marina...")
         
         # Cargar subtítulos
         print("📖 Cargando subtítulos...")
@@ -680,8 +680,8 @@ def main():
     analyzer = BiodiversityAnalyzerFixed()
     
     try:
-        species_data, taxonomy_data = analyzer.analyze_biodiversity_fixed()
-        print("\n✅ Análisis corregido completado exitosamente!")
+        species_data, taxonomy_data = analyzer.analyze_biodiversity()
+        print("\n✅ Análisis completado exitosamente!")
         
     except Exception as e:
         print(f"❌ Error durante el análisis: {e}")
