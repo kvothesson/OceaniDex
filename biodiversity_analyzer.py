@@ -488,17 +488,66 @@ class BiodiversityAnalyzerFixed:
         return "; ".join(info) if info else ""
     
     def _remove_duplicates(self, species_list: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Eliminar duplicados basados en nombre y timestamp."""
-        seen = set()
-        unique_species = []
+        """Eliminar duplicados basados en nombre y proximidad temporal."""
+        from datetime import datetime, timedelta
         
+        def parse_timestamp(timestamp_str: str) -> datetime:
+            """Convertir timestamp string a datetime object."""
+            try:
+                # Formato esperado: HH:MM:SS.mmm
+                time_parts = timestamp_str.split(':')
+                if len(time_parts) == 3:
+                    seconds_parts = time_parts[2].split('.')
+                    hours = int(time_parts[0])
+                    minutes = int(time_parts[1])
+                    seconds = int(seconds_parts[0])
+                    milliseconds = int(seconds_parts[1]) if len(seconds_parts) > 1 else 0
+                    
+                    return datetime(2024, 1, 1, hours, minutes, seconds, milliseconds * 1000)
+                return datetime.min
+            except:
+                return datetime.min
+        
+        def time_difference(timestamp1: str, timestamp2: str) -> float:
+            """Calcular diferencia en segundos entre dos timestamps."""
+            dt1 = parse_timestamp(timestamp1)
+            dt2 = parse_timestamp(timestamp2)
+            return abs((dt2 - dt1).total_seconds())
+        
+        # Agrupar especies por nombre (case insensitive)
+        species_groups = {}
         for species in species_list:
-            key = (species['common_name'].lower(), species['timestamp'])
-            
-            if key not in seen:
-                seen.add(key)
-                unique_species.append(species)
+            name_lower = species['common_name'].lower()
+            if name_lower not in species_groups:
+                species_groups[name_lower] = []
+            species_groups[name_lower].append(species)
         
+        # Para cada grupo, mantener solo la primera detección en un rango temporal
+        unique_species = []
+        time_threshold = 300.0  # 5 minutos de diferencia máxima
+        
+        for name_lower, group in species_groups.items():
+            # Ordenar por timestamp
+            group.sort(key=lambda x: parse_timestamp(x.get('timestamp', '00:00:00.000')))
+            
+            kept_species = []
+            for species in group:
+                timestamp = species.get('timestamp', '00:00:00.000')
+                
+                # Verificar si hay una especie similar ya guardada en el rango temporal
+                is_duplicate = False
+                for kept in kept_species:
+                    kept_timestamp = kept.get('timestamp', '00:00:00.000')
+                    if time_difference(timestamp, kept_timestamp) <= time_threshold:
+                        is_duplicate = True
+                        break
+                
+                if not is_duplicate:
+                    kept_species.append(species)
+            
+            unique_species.extend(kept_species)
+        
+        print(f"🔍 Deduplicación: {len(species_list)} -> {len(unique_species)} especies únicas")
         return unique_species
     
     def organize_by_taxonomy(self, species_list: List[Dict[str, Any]]) -> Dict[str, Any]:
