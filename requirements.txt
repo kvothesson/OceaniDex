@@ -1,0 +1,17 @@
+# Dependencias del Analizador de Biodiversidad Marina
+# Python 3.8+ requerido
+
+# Servicios de IA (opcionales)
+# google-generativeai>=0.3.0
+# groq>=0.4.0
+
+# Procesamiento de datos
+# pandas>=1.5.0
+# numpy>=1.21.0
+
+# Servidor web (incluido en Python estándar)
+# http.server (built-in)
+
+# Procesamiento de texto
+# re (built-in)
+# json (built-in) 
