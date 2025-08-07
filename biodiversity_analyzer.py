@@ -370,9 +370,25 @@ class BiodiversityAnalyzerFixed:
         end = min(len(text), position + context_size)
         context = text[start:end].strip()
         
-        # Limpiar contexto
+        # Limpiar contexto - eliminar timestamps del formato de subtítulos
+        context = re.sub(r'\[\d{2}:\d{2}:\d{2}\.\d{3}\s*-->\s*\d{2}:\d{2}:\d{2}\.\d{3}\]', '', context)
+        # Eliminar también timestamps sueltos que puedan quedar
+        context = re.sub(r'\d{2}:\d{2}:\d{2}\.\d{3}', '', context)
+        # Eliminar fragmentos de timestamps que puedan quedar
+        context = re.sub(r':\d{2}:\d{2}\.\d{3}', '', context)
+        context = re.sub(r'\d{2}:\d{2}\.\d{3}', '', context)
+        context = re.sub(r'\d{2}:\d{2}', '', context)
+        # Eliminar corchetes y fragmentos restantes
+        context = re.sub(r'\[.*?\]', '', context)
+        context = re.sub(r'-->', '', context)
+        # Eliminar cualquier fragmento que contenga números y puntos
+        context = re.sub(r'\d+\.\d+', '', context)
+        # Eliminar corchetes sueltos y fragmentos restantes
+        context = re.sub(r'\[', '', context)
+        context = re.sub(r'\]', '', context)
         context = re.sub(r'\n+', ' ', context)
         context = re.sub(r'\s+', ' ', context)
+        context = context.strip()
         
         return context
     
