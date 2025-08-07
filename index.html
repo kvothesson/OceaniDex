@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌊 Analizador de Biodiversidad Marina</title>
+    <title>🌊 MarinaDex - Pokédex de Biodiversidad Marina</title>
     <style>
         * {
             margin: 0;
@@ -155,7 +155,7 @@
 
         .species-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 20px;
         }
 
@@ -167,6 +167,7 @@
             transition: transform 0.3s ease;
             border-left: 5px solid #667eea;
             position: relative;
+            cursor: pointer;
         }
 
         .species-card:hover {
@@ -182,6 +183,13 @@
 
         .species-info {
             flex: 1;
+        }
+
+        .species-id {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .species-name {
@@ -228,13 +236,6 @@
             padding: 10px;
         }
 
-        .thumbnail-loading {
-            color: #667eea;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 10px;
-        }
-
         .species-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -260,7 +261,17 @@
             font-weight: 500;
         }
 
+        .occurrences-info {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
 
+        .occurrences-count {
+            font-weight: bold;
+            color: #667eea;
+        }
 
         /* Modal styles */
         .modal {
@@ -279,10 +290,13 @@
             margin: auto;
             padding: 20px;
             width: 90%;
-            max-width: 800px;
+            max-width: 1000px;
             max-height: 90%;
             top: 50%;
             transform: translateY(-50%);
+            background: white;
+            border-radius: 15px;
+            overflow-y: auto;
         }
 
         .close {
@@ -304,22 +318,126 @@
             cursor: pointer;
         }
 
-        .modal-image {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
         }
 
-        .context-preview {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 0.9rem;
+        .modal-species-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .modal-species-scientific {
+            font-size: 1.2rem;
             color: #666;
-            margin-top: 10px;
-            max-height: 80px;
-            overflow: hidden;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .modal-taxonomy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-image-gallery {
+            margin-bottom: 30px;
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .gallery-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .current-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .occurrences-list {
+            margin-top: 20px;
+        }
+
+        .occurrence-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .occurrence-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .occurrence-timestamp {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .occurrence-confidence {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .occurrence-context {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         .loading {
@@ -379,14 +497,23 @@
                 width: 100%;
                 height: 120px;
             }
+
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .modal-species-name {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌊 Analizador de Biodiversidad Marina</h1>
-            <p>Expedición Cañón de Mar del Plata</p>
+            <h1>🌊 MarinaDex</h1>
+            <p>Pokédex de Biodiversidad Marina - Expedición Cañón de Mar del Plata</p>
         </div>
 
         <div class="stats-grid" id="statsGrid">
@@ -398,7 +525,6 @@
                 <div class="stat-number" id="totalPhyla">-</div>
                 <div class="stat-label">Filos Detectados</div>
             </div>
-
             <div class="stat-card">
                 <div class="stat-number" id="unknownSpecies">-</div>
                 <div class="stat-label">Especies Nuevas</div>
@@ -417,7 +543,6 @@
                         <option value="">Todos los filos</option>
                     </select>
                 </div>
-
                 <div class="control-group">
                     <label for="methodFilter">🔬 Filtrar por Método</label>
                     <select id="methodFilter">
@@ -435,19 +560,21 @@
         </div>
 
         <div id="speciesContainer">
-            <div class="loading">Cargando datos de biodiversidad...</div>
+            <div class="loading">Cargando MarinaDex...</div>
         </div>
 
         <div class="footer">
-            <p>🌊 Herramienta de análisis para científicos e investigadores marinos</p>
+            <p>🌊 Herramienta de análisis tipo Pokédex para científicos e investigadores marinos</p>
         </div>
     </div>
 
-    <!-- Modal para mostrar imágenes -->
-    <div id="imageModal" class="modal">
+    <!-- Modal para mostrar detalles de especie -->
+    <div id="speciesModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modalImage" class="modal-image" alt="Imagen de la especie">
+            <div id="modalContent">
+                <!-- Content will be generated dynamically -->
+            </div>
         </div>
     </div>
 
@@ -459,13 +586,14 @@
             phylum: '',
             method: ''
         };
-        let thumbnailsIndex = {};
+        let currentSpecies = null;
+        let currentImageIndex = 0;
 
         // Cargar datos
         async function loadBiodiversityData() {
             try {
-                // Usar el API para obtener datos con URLs de thumbnails
-                const response = await fetch('/api/species');
+                // Usar el API para obtener datos agrupados tipo Pokédex
+                const response = await fetch('/api/species-grouped');
                 const speciesData = await response.json();
                 
                 // Cargar datos originales para estadísticas
@@ -475,10 +603,10 @@
                 // Combinar datos
                 biodiversityData = {
                     ...statsData,
-                    species_data: speciesData // Usar datos del API con thumbnails
+                    species_data: speciesData // Usar datos agrupados tipo Pokédex
                 };
                 
-                console.log(`📊 Cargadas ${speciesData.length} especies con thumbnails`);
+                console.log(`📊 Cargadas ${speciesData.length} especies agrupadas tipo Pokédex`);
                 
                 initializeApp();
             } catch (error) {
@@ -530,8 +658,6 @@
                 currentFilters.phylum = e.target.value;
                 applyFilters();
             });
-
-
 
             // Setup method filter
             document.getElementById('methodFilter').addEventListener('change', (e) => {
@@ -587,8 +713,6 @@
                     return false;
                 }
 
-
-
                 // Method filter
                 if (currentFilters.method && species.detection_method !== currentFilters.method) {
                     return false;
@@ -623,6 +747,7 @@
         function createSpeciesCard(species) {
             const card = document.createElement('div');
             card.className = 'species-card';
+            card.onclick = () => showSpeciesDetails(species);
 
             // Crear thumbnail
             const thumbnail = createThumbnail(species);
@@ -630,6 +755,7 @@
             card.innerHTML = `
                 <div class="species-header">
                     <div class="species-info">
+                        <div class="species-id">#${species.id.toString().padStart(3, '0')}</div>
                         <div class="species-name">${species.common_name}</div>
                         ${species.scientific_name ? `<div class="species-scientific">${species.scientific_name}</div>` : ''}
                     </div>
@@ -646,23 +772,19 @@
                         <div class="detail-value">${species.class || 'N/A'}</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">Timestamp</div>
-                        <div class="detail-value">${species.timestamp}</div>
+                        <div class="detail-label">Menciones</div>
+                        <div class="detail-value">${species.total_mentions}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Confianza</div>
+                        <div class="detail-value">${(species.confidence * 100).toFixed(0)}%</div>
                     </div>
                 </div>
                 
-                ${species.additional_info ? `
-                    <div class="detail-item">
-                        <div class="detail-label">Información Adicional</div>
-                        <div class="detail-value">${species.additional_info}</div>
-                    </div>
-                ` : ''}
-                
-                ${species.context ? `
-                    <div class="context-preview">
-                        <strong>Contexto:</strong> ${species.context.substring(0, 150)}${species.context.length > 150 ? '...' : ''}
-                    </div>
-                ` : ''}
+                <div class="occurrences-info">
+                    <div class="occurrences-count">📸 ${species.all_occurrences.filter(o => o.thumbnail_url).length} fotos disponibles</div>
+                    <div>⏰ Desde ${species.first_timestamp} hasta ${species.last_timestamp}</div>
+                </div>
             `;
 
             return card;
@@ -670,73 +792,157 @@
 
         function createThumbnail(species) {
             // Usar la URL del servidor si está disponible
-            if (species.thumbnail_url) {
+            if (species.main_thumbnail) {
                 return `
-                    <div class="thumbnail-container" onclick="showImage('${species.thumbnail_url}')">
-                        <img src="${species.thumbnail_url}" alt="Timestamp ${species.timestamp}" class="thumbnail-image" 
-                             onload="console.log('✅ Imagen cargada:', '${species.thumbnail_url}')"
-                             onerror="console.error('❌ Error cargando imagen:', '${species.thumbnail_url}'); this.parentElement.innerHTML='<div class=\\'thumbnail-placeholder\\'>📷<br>Error de carga<br>${species.timestamp}</div>'">
+                    <div class="thumbnail-container">
+                        <img src="${species.main_thumbnail}" alt="${species.common_name}" class="thumbnail-image" 
+                             onload="console.log('✅ Imagen cargada:', '${species.main_thumbnail}')"
+                             onerror="console.error('❌ Error cargando imagen:', '${species.main_thumbnail}'); this.parentElement.innerHTML='<div class=\\'thumbnail-placeholder\\'>📷<br>Error de carga</div>'">
                     </div>
                 `;
             }
             
             // Fallback: mostrar placeholder
             return `
-                <div class="thumbnail-container" onclick="showPlaceholder('${species.common_name}', '${species.timestamp}')">
+                <div class="thumbnail-container">
                     <div class="thumbnail-placeholder">
-                        📝<br>Sin imagen<br>${species.timestamp}
+                        📝<br>Sin imagen
                     </div>
                 </div>
             `;
         }
 
-        function showImage(imagePath) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modalImg.src = imagePath;
+        function showSpeciesDetails(species) {
+            currentSpecies = species;
+            currentImageIndex = 0;
+            
+            const modal = document.getElementById('speciesModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Filtrar ocurrencias con fotos
+            const occurrencesWithPhotos = species.all_occurrences.filter(o => o.thumbnail_url);
+            
+            modalContent.innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-species-name">#${species.id.toString().padStart(3, '0')} ${species.common_name}</div>
+                    ${species.scientific_name ? `<div class="modal-species-scientific">${species.scientific_name}</div>` : ''}
+                    <div class="modal-taxonomy">
+                        <div><strong>Filo:</strong> ${species.phylum}</div>
+                        <div><strong>Clase:</strong> ${species.class || 'N/A'}</div>
+                        <div><strong>Método:</strong> ${species.detection_method}</div>
+                        <div><strong>Confianza:</strong> ${(species.confidence * 100).toFixed(0)}%</div>
+                        <div><strong>Total menciones:</strong> ${species.total_mentions}</div>
+                    </div>
+                </div>
+                
+                ${occurrencesWithPhotos.length > 0 ? `
+                    <div class="modal-image-gallery">
+                        <div class="gallery-header">
+                            <h3>📸 Galería de Fotos (${occurrencesWithPhotos.length} fotos)</h3>
+                            <div class="gallery-nav">
+                                <button class="nav-btn" onclick="previousImage()" id="prevBtn">◀ Anterior</button>
+                                <span style="margin: 0 10px;">${currentImageIndex + 1} / ${occurrencesWithPhotos.length}</span>
+                                <button class="nav-btn" onclick="nextImage()" id="nextBtn">Siguiente ▶</button>
+                            </div>
+                        </div>
+                        <div id="currentImageContainer">
+                            <!-- Image will be loaded here -->
+                        </div>
+                    </div>
+                ` : `
+                    <div class="image-placeholder">
+                        📷<br>No hay fotos disponibles para esta especie
+                    </div>
+                `}
+                
+                <div class="occurrences-list">
+                    <h3>📋 Todas las Detecciones (${species.all_occurrences.length})</h3>
+                    ${species.all_occurrences.map((occurrence, index) => `
+                        <div class="occurrence-item">
+                            <div class="occurrence-header">
+                                <span class="occurrence-timestamp">⏰ ${occurrence.timestamp}</span>
+                                <span class="occurrence-confidence">${(occurrence.confidence * 100).toFixed(0)}%</span>
+                            </div>
+                            ${occurrence.context ? `<div class="occurrence-context">${occurrence.context}</div>` : ''}
+                            ${occurrence.additional_info ? `<div class="occurrence-context"><strong>Info:</strong> ${occurrence.additional_info}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
             modal.style.display = 'block';
+            
+            // Load first image if available
+            if (occurrencesWithPhotos.length > 0) {
+                loadCurrentImage();
+            }
         }
 
-        function showPlaceholder(speciesName, timestamp) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
+        function loadCurrentImage() {
+            const occurrencesWithPhotos = currentSpecies.all_occurrences.filter(o => o.thumbnail_url);
+            if (occurrencesWithPhotos.length === 0) return;
             
-            // Crear imagen placeholder con información
-            const canvas = document.createElement('canvas');
-            canvas.width = 800;
-            canvas.height = 600;
-            const ctx = canvas.getContext('2d');
+            const currentOccurrence = occurrencesWithPhotos[currentImageIndex];
+            const container = document.getElementById('currentImageContainer');
             
-            // Fondo
-            ctx.fillStyle = '#667eea';
-            ctx.fillRect(0, 0, 800, 600);
+            container.innerHTML = `
+                <img src="${currentOccurrence.thumbnail_url}" alt="Foto ${currentImageIndex + 1}" class="current-image"
+                     onload="console.log('✅ Imagen modal cargada:', '${currentOccurrence.thumbnail_url}')"
+                     onerror="console.error('❌ Error cargando imagen modal:', '${currentOccurrence.thumbnail_url}'); this.parentElement.innerHTML='<div class=\\'image-placeholder\\'>❌ Error cargando imagen<br>${currentOccurrence.timestamp}</div>'">
+            `;
             
-            // Texto
-            ctx.fillStyle = 'white';
-            ctx.font = 'bold 24px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('🐠 ESPECIE DETECTADA', 400, 200);
-            ctx.fillText(speciesName, 400, 240);
-            ctx.fillText('⏰ TIMESTAMP', 400, 300);
-            ctx.fillText(timestamp, 400, 340);
-            ctx.fillText('📊 Análisis de Biodiversidad Marina', 400, 400);
-            ctx.fillText('🌊 Expedición Cañón de Mar del Plata', 400, 440);
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentImageIndex === 0;
+            document.getElementById('nextBtn').disabled = currentImageIndex === occurrencesWithPhotos.length - 1;
             
-            modalImg.src = canvas.toDataURL();
-            modal.style.display = 'block';
+            // Update counter
+            const counter = document.querySelector('.gallery-nav span');
+            if (counter) {
+                counter.textContent = `${currentImageIndex + 1} / ${occurrencesWithPhotos.length}`;
+            }
+        }
+
+        function nextImage() {
+            const occurrencesWithPhotos = currentSpecies.all_occurrences.filter(o => o.thumbnail_url);
+            if (currentImageIndex < occurrencesWithPhotos.length - 1) {
+                currentImageIndex++;
+                loadCurrentImage();
+            }
+        }
+
+        function previousImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                loadCurrentImage();
+            }
         }
 
         function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
+            document.getElementById('speciesModal').style.display = 'none';
+            currentSpecies = null;
+            currentImageIndex = 0;
         }
 
-        // Cerrar modal al hacer clic fuera de la imagen
+        // Cerrar modal al hacer clic fuera del contenido
         window.onclick = function(event) {
-            const modal = document.getElementById('imageModal');
+            const modal = document.getElementById('speciesModal');
             if (event.target === modal) {
-                modal.style.display = 'none';
+                closeModal();
             }
         }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            if (currentSpecies) {
+                if (event.key === 'Escape') {
+                    closeModal();
+                } else if (event.key === 'ArrowRight') {
+                    nextImage();
+                } else if (event.key === 'ArrowLeft') {
+                    previousImage();
+                }
+            }
+        });
 
         // Inicializar la aplicación
         loadBiodiversityData();
