@@ -1,145 +1,169 @@
-# 🌊 Analizador de Biodiversidad Marina
+# 🌊 MarinaDex - Pokédex de Biodiversidad Marina
 
-Herramienta para analizar la biodiversidad marina a partir de subtítulos de expediciones científicas.
+Una herramienta tipo Pokédex para analizar y visualizar especies marinas detectadas en expediciones científicas. MarinaDex agrupa especies similares y permite explorar múltiples detecciones con sus respectivas fotos y timestamps.
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/tu-usuario/MarinaDex)
+## 🚀 Características
 
-## 📖 Descripción
+### 📊 Vista Tipo Pokédex
+- **Agrupación inteligente**: Las especies se agrupan por nombre común, evitando duplicados
+- **Navegación de fotos**: Cada especie puede tener múltiples fotos que se pueden recorrer
+- **Timestamps detallados**: Registro completo de todas las detecciones de cada especie
+- **Información taxonómica**: Filo, clase, método de detección y nivel de confianza
 
-Este proyecto analiza automáticamente subtítulos de expediciones científicas marinas para identificar y catalogar especies marinas. Utiliza técnicas de procesamiento de lenguaje natural y patrones de reconocimiento para extraer información taxonómica, timestamps y contexto de cada detección.
+### 🔍 Funcionalidades de Búsqueda y Filtrado
+- **Búsqueda en tiempo real**: Busca por nombre común o científico
+- **Filtros por filo**: Arthropoda, Cnidaria, Mollusca, Porifera, Echinodermata, Annelida, Chordata
+- **Filtros por método**: Patrones conocidos, nombres científicos, contexto científico
+- **Pestañas de navegación**: Acceso rápido a especies por filo
 
-## 📋 Características
+### 📱 Diseño Responsive
+- **Optimizado para móvil**: Interfaz adaptativa para celulares y tablets
+- **Navegación táctil**: Controles optimizados para pantallas táctiles
+- **Modal interactivo**: Vista detallada con galería de fotos y navegación
 
-- **Detección inteligente** de especies marinas
-- **Extracción precisa** de timestamps
-- **Análisis contextual** para especies nuevas
-- **Organización taxonómica** por filo y clase
-- **Sistema de confianza** para validar detecciones
-- **Información adicional** (tamaños, profundidades, comportamientos)
-- **Frontend interactivo** para visualizar resultados
+### 🖼️ Galería de Fotos
+- **Navegación con flechas**: Botones para recorrer las fotos
+- **Navegación con teclado**: Flechas izquierda/derecha para cambiar foto
+- **Contador de fotos**: Muestra la posición actual en la galería
+- **Información contextual**: Cada foto incluye timestamp y contexto
 
-## 🚀 Instalación y Uso
+## 🛠️ Instalación y Uso
 
-### Prerrequisitos
-- Python 3.8 o superior
+### Requisitos
+- Python 3.7+
 - Navegador web moderno
 
 ### Instalación
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/MarinaDex.git
+git clone <repository-url>
 cd MarinaDex
 
-# Instalar dependencias (opcional)
+# Instalar dependencias (si las hay)
 pip install -r requirements.txt
-```
 
-### Análisis de Datos
-```bash
-python3 biodiversity_analyzer.py
-```
-
-### Visualización Web
-```bash
+# Ejecutar el servidor
 python3 server.py
 ```
-Luego abre http://localhost:8000 en tu navegador.
 
-## 📊 Resultados
+### Acceso
+1. Abrir el navegador en `http://localhost:8080`
+2. La interfaz se cargará automáticamente con los datos de biodiversidad
+3. Usar los filtros y búsqueda para explorar especies
+4. Hacer clic en cualquier especie para ver detalles completos
 
-El analizador genera:
-- **Reporte detallado** en consola
-- **Archivo JSON** con todos los datos (`biodiversity_results.json`)
-- **Estadísticas** por filo taxonómico
-- **Especies nuevas** detectadas automáticamente
-- **Frontend interactivo** con filtros y búsqueda
+## 📋 Estructura de Datos
 
-## 🎯 Frontend Interactivo
-
-### Características del Frontend:
-- **📊 Dashboard** con estadísticas en tiempo real
-- **🔍 Búsqueda** de especies por nombre
-- **🦠 Filtros** por filo, confianza y método de detección
-- **📱 Diseño responsive** para móviles y desktop
-- **🎨 Interfaz moderna** con gradientes y animaciones
-- **⚡ Carga rápida** con paginación inteligente
-
-### Funcionalidades:
-- **Visualización de especies** en tarjetas interactivas
-- **Filtros múltiples** combinables
-- **Barras de confianza** con colores
-- **Contexto de detección** para cada especie
-- **Información taxonómica** completa
-- **Timestamps precisos** de cada detección
-
-## 🔍 Filos Detectados
-
-- **Arthropoda**: Langostas, camarones, cangrejos
-- **Cnidaria**: Corales, anémonas, hidros
-- **Mollusca**: Pulpos, caracoles, calamares
-- **Chordata**: Peces, rayas, tiburones
-- **Echinodermata**: Estrellas de mar, erizos
-- **Porifera**: Esponjas
-- **Annelida**: Poliquetos
-
-## 📁 Archivos
-
-- `biodiversity_analyzer.py` - Analizador principal
-- `server.py` - Servidor web para el frontend
-- `index.html` - Frontend interactivo
-- `subtitulos_espanol.txt` - Datos de entrada
-- `biodiversity_results.json` - Resultados del análisis
-- `services/` - Servicios de IA (opcional)
-
-## 🎯 Ejemplo de Salida
-
-```
-🌊 REPORTE DE BIODIVERSIDAD MARINA
-====================================
-📊 Total de especies identificadas: 1,000+
-🔍 Métodos de detección utilizados:
-   • known_pattern: 1,000+ especies
-📈 Confianza promedio: 0.90
-
-🦠 FILO: CHORDATA
-   Especies encontradas: 63
-   • pez (Timestamp: 05:01:19.920)
-   • raya (Timestamp: 01:51:47.149)
-   • caballito de mar (Timestamp: 06:40:51.868)
+### Especies Agrupadas (Formato Pokédex)
+```json
+{
+  "id": 1,
+  "common_name": "balanus",
+  "scientific_name": "Balanus sp.",
+  "phylum": "Arthropoda",
+  "class": "Cirripedia",
+  "detection_method": "known_pattern",
+  "confidence": 0.9,
+  "total_mentions": 2,
+  "first_timestamp": "00:01:01.760",
+  "last_timestamp": "10:23:47.350",
+  "main_thumbnail": "/api/thumbnail/balanus_00_01_01_760.jpg",
+  "all_occurrences": [
+    {
+      "timestamp": "00:01:01.760",
+      "context": "Estoy estoy casi seguro que vi antes...",
+      "thumbnail_url": "/api/thumbnail/balanus_00_01_01_760.jpg",
+      "confidence": 0.9,
+      "detection_method": "known_pattern"
+    }
+  ]
+}
 ```
 
-## 🌐 Acceso Web
+## 🎯 Casos de Uso
 
-Una vez iniciado el servidor:
-- **URL**: http://localhost:8000
-- **Puerto**: 8000 (configurable en server.py)
-- **Compatibilidad**: Chrome, Firefox, Safari, Edge
+### Para Científicos
+- **Análisis de biodiversidad**: Explorar especies detectadas en expediciones
+- **Validación de datos**: Revisar múltiples detecciones de la misma especie
+- **Documentación visual**: Acceso a fotos de cada detección con contexto temporal
 
-## 🔧 Tecnologías
+### Para Investigadores
+- **Estudios taxonómicos**: Filtrar por filo y clase para análisis específicos
+- **Análisis temporal**: Ver patrones de detección a lo largo del tiempo
+- **Control de calidad**: Evaluar confianza y métodos de detección
 
-- **Backend**: Python 3.x
-- **Frontend**: HTML5, CSS3, JavaScript ES6+
-- **Servidor**: HTTP Server nativo de Python
-- **Datos**: JSON con encoding UTF-8
+### Para Educadores
+- **Material didáctico**: Interfaz visual para enseñar biodiversidad marina
+- **Exploración interactiva**: Navegación intuitiva tipo Pokédex
+- **Contexto científico**: Información completa de cada especie
 
-## 📝 Licencia
+## 🔧 API Endpoints
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+### `/api/species-grouped`
+Retorna especies agrupadas tipo Pokédex con todas sus ocurrencias.
 
-## 🤝 Contribuciones
+**Parámetros de consulta:**
+- `phylum`: Filtrar por filo específico
+- `method`: Filtrar por método de detección
+- `search`: Buscar por nombre
+- `confidence`: Filtrar por nivel de confianza mínimo
 
-Las contribuciones son bienvenidas! Por favor:
+### `/api/thumbnail/{filename}`
+Sirve las imágenes de thumbnails para cada timestamp.
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
+### `/api/stats`
+Estadísticas generales de biodiversidad.
+
+## 🎨 Características de la Interfaz
+
+### Diseño Visual
+- **Gradiente marino**: Fondo con colores del océano
+- **Tarjetas modernas**: Diseño tipo Pokédex con información clara
+- **Iconografía**: Emojis y símbolos para mejor UX
+- **Animaciones suaves**: Transiciones y hover effects
+
+### Navegación
+- **Modal detallado**: Vista completa de cada especie
+- **Galería de fotos**: Navegación con controles visuales
+- **Lista de ocurrencias**: Todas las detecciones con contexto
+- **Información taxonómica**: Datos científicos organizados
+
+### Responsive Design
+- **Mobile-first**: Optimizado para pantallas pequeñas
+- **Touch-friendly**: Controles adaptados para táctil
+- **Grid adaptativo**: Layout que se ajusta al tamaño de pantalla
+
+## 🚀 Próximas Funcionalidades
+
+- [ ] **Exportación de datos**: Descargar reportes en PDF/CSV
+- [ ] **Mapas interactivos**: Visualización geográfica de detecciones
+- [ ] **Análisis estadístico**: Gráficos y métricas avanzadas
+- [ ] **Integración con bases de datos**: Conectar con sistemas científicos
+- [ ] **Modo offline**: Funcionalidad sin conexión
+- [ ] **API REST completa**: Endpoints para integración externa
+
+## 🤝 Contribución
+
+Este proyecto está diseñado para la comunidad científica marina. Las contribuciones son bienvenidas:
+
+1. Fork el repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -am 'Agregar nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
-## 📞 Contacto
+## 📄 Licencia
 
-- **Autor**: Tu Nombre
-- **Email**: tu-email@ejemplo.com
-- **Proyecto**: [https://github.com/tu-usuario/MarinaDex](https://github.com/tu-usuario/MarinaDex) 
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 🌊 Expedición
+
+**Expedición Cañón de Mar del Plata**
+- Análisis de biodiversidad marina
+- Detección automática de especies
+- Documentación visual completa
+- Herramienta tipo Pokédex para científicos
+
+---
+
+*MarinaDex: Explorando la biodiversidad marina, una especie a la vez* 🌊🐠 
