@@ -133,14 +133,16 @@ Estadísticas generales de biodiversidad.
 - **Touch-friendly**: Controles adaptados para táctil
 - **Grid adaptativo**: Layout que se ajusta al tamaño de pantalla
 
-## 🚀 Próximas Funcionalidades
 
-- [ ] **Exportación de datos**: Descargar reportes en PDF/CSV
-- [ ] **Mapas interactivos**: Visualización geográfica de detecciones
-- [ ] **Análisis estadístico**: Gráficos y métricas avanzadas
-- [ ] **Integración con bases de datos**: Conectar con sistemas científicos
-- [ ] **Modo offline**: Funcionalidad sin conexión
-- [ ] **API REST completa**: Endpoints para integración externa
+## 📌 Backlog
+
+- Obtener todas las campañas
+- Utilizar IA para mejorar la detección de especies: hay casos donde se menciona una especie de otro momento de la expedición y se toma como nueva
+- Poder ver el momento exacto del video
+- Descargar datos desde un CSV
+
+### Difícil
+- Análisis de imágenes
 
 ## 🤝 Contribución
 
