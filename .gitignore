@@ -46,6 +46,7 @@ Thumbs.db
 
 # Logs
 *.log
+run_ai.log
 
 # Temporary files
 *.tmp
