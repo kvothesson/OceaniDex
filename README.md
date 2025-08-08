@@ -1,6 +1,6 @@
-# 🌊 MarinaDex - Pokédex de Biodiversidad Marina
+# 🌊 OceaniDex - Pokédex de Biodiversidad Marina
 
-Una herramienta tipo Pokédex para analizar y visualizar especies marinas detectadas en expediciones científicas. MarinaDex agrupa especies similares y permite explorar múltiples detecciones con sus respectivas fotos y timestamps.
+Una herramienta tipo Pokédex para analizar y visualizar especies marinas detectadas en expediciones científicas. OceaniDex agrupa especies similares y permite explorar múltiples detecciones con sus respectivas fotos y timestamps.
 
 ## 🚀 Características
 
@@ -37,7 +37,7 @@ Una herramienta tipo Pokédex para analizar y visualizar especies marinas detect
 ```bash
 # Clonar el repositorio
 git clone <repository-url>
-cd MarinaDex
+cd OceaniDex
 
 # Instalar dependencias (si las hay)
 pip install -r requirements.txt
@@ -166,4 +166,4 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ---
 
-*MarinaDex: Explorando la biodiversidad marina, una especie a la vez* 🌊🐠 
+*OceaniDex: Explorando la biodiversidad marina, una especie a la vez* 🌊🐠 
