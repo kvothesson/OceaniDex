@@ -730,7 +730,9 @@
 
             // Setup phylum filter
             const phylumFilter = document.getElementById('phylumFilter');
-            const phyla = [...new Set(biodiversityData.species_data.map(s => s.phylum))].sort();
+            const phyla = [...new Set(biodiversityData.species_data.map(s => s.phylum))]
+                .filter(p => p && p !== 'Desconocido')
+                .sort();
             phyla.forEach(phylum => {
                 const option = document.createElement('option');
                 option.value = phylum;
@@ -751,7 +753,9 @@
 
         function setupPhylumTabs() {
             const tabsContainer = document.getElementById('phylumTabs');
-            const phyla = [...new Set(biodiversityData.species_data.map(s => s.phylum))].sort();
+            const phyla = [...new Set(biodiversityData.species_data.map(s => s.phylum))]
+                .filter(p => p && p !== 'Desconocido')
+                .sort();
             
             // Add "All" tab
             const allTab = document.createElement('div');
@@ -784,6 +788,11 @@
 
         function applyFilters() {
             filteredSpecies = biodiversityData.species_data.filter(species => {
+                // Excluir por defecto especies con filo desconocido
+                if (species.phylum === 'Desconocido') {
+                    return false;
+                }
+
                 // Search filter
                 if (currentFilters.search && 
                     !species.common_name.toLowerCase().includes(currentFilters.search) &&
