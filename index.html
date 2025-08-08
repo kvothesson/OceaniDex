@@ -589,31 +589,114 @@
         let currentSpecies = null;
         let currentImageIndex = 0;
 
-        // Cargar datos
+        // Cargar datos (modo estático para GitHub Pages)
         async function loadBiodiversityData() {
             try {
-                // Usar el API para obtener datos agrupados tipo Pokédex
-                const response = await fetch('/api/species-grouped');
-                const speciesData = await response.json();
-                
-                // Cargar datos originales para estadísticas
-                const statsResponse = await fetch('biodiversity_results.json');
-                const statsData = await statsResponse.json();
-                
-                // Combinar datos
+                // 1) Cargar dataset (prefiere el "fixed" si existe)
+                const statsData = await fetchWithFallback([
+                    'biodiversity_results_fixed.json',
+                    'biodiversity_results.json'
+                ]);
+
+                // 2) Cargar índice de thumbnails si existe
+                let thumbnailsIndex = {};
+                try {
+                    const r = await fetch('thumbnails/thumbnails_index.json');
+                    if (r.ok) thumbnailsIndex = await r.json();
+                } catch (_) {}
+
+                // 3) Generar en cliente los datos agrupados tipo Pokédex
+                const speciesData = buildGroupedSpecies(statsData.species_data || [], thumbnailsIndex);
+
+                // 4) Combinar datos
                 biodiversityData = {
                     ...statsData,
-                    species_data: speciesData // Usar datos agrupados tipo Pokédex
+                    species_data: speciesData
                 };
-                
-                console.log(`📊 Cargadas ${speciesData.length} especies agrupadas tipo Pokédex`);
-                
+
+                console.log(`📊 Cargadas ${speciesData.length} especies agrupadas tipo Pokédex (cliente)`);
                 initializeApp();
             } catch (error) {
                 console.error('❌ Error cargando datos:', error);
                 document.getElementById('speciesContainer').innerHTML = 
-                    '<div class="error">❌ Error al cargar los datos. Verifica que el servidor esté funcionando.</div>';
+                    '<div class="error">❌ Error al cargar los datos. Si es la primera vez, espera unos segundos a que GitHub Pages termine de publicar y recarga.</div>';
             }
+        }
+
+        async function fetchWithFallback(paths) {
+            let lastError = null;
+            for (const p of paths) {
+                try {
+                    const res = await fetch(p);
+                    if (res.ok) return await res.json();
+                    lastError = new Error(`${p}: ${res.status}`);
+                } catch (e) {
+                    lastError = e;
+                }
+            }
+            throw lastError || new Error('No se pudo cargar ningún JSON');
+        }
+
+        function buildGroupedSpecies(speciesList, thumbnailsIndex) {
+            const byCommon = new Map();
+
+            for (const s of speciesList) {
+                const common = (s.common_name || '').toLowerCase();
+                if (!common) continue;
+
+                // Asignar thumbnail si hay timestamp en índice
+                const ts = s.timestamp || '';
+                let thumbUrl = null;
+                if (ts && thumbnailsIndex && thumbnailsIndex[ts]) {
+                    let filename = thumbnailsIndex[ts];
+                    if (typeof filename === 'string' && filename.includes('/')) {
+                        filename = filename.split('/').pop();
+                    }
+                    if (filename) thumbUrl = `thumbnails/${filename}`;
+                }
+
+                const entry = {
+                    timestamp: s.timestamp || '',
+                    context: s.context || '',
+                    additional_info: s.additional_info || '',
+                    thumbnail_url: thumbUrl,
+                    confidence: s.confidence || 0,
+                    detection_method: s.detection_method || ''
+                };
+
+                if (!byCommon.has(common)) byCommon.set(common, []);
+                byCommon.get(common).push({ ...s, thumbnail_url: thumbUrl, _occ: entry });
+            }
+
+            const result = [];
+            for (const [common, list] of byCommon.entries()) {
+                if (!list.length) continue;
+                const main = list[0];
+                const occurrences = list.map(x => x._occ).sort((a, b) => (a.timestamp || '').localeCompare(b.timestamp || ''));
+
+                // Elegir primer thumbnail disponible como principal
+                let mainThumb = null;
+                for (const occ of occurrences) {
+                    if (occ.thumbnail_url) { mainThumb = occ.thumbnail_url; break; }
+                }
+
+                result.push({
+                    id: result.length + 1,
+                    common_name: main.common_name || '',
+                    scientific_name: main.scientific_name || '',
+                    phylum: main.phylum || '',
+                    class: main.class || '',
+                    detection_method: main.detection_method || '',
+                    confidence: main.confidence || 0,
+                    total_mentions: list.length,
+                    first_timestamp: occurrences.length ? occurrences[0].timestamp : '',
+                    last_timestamp: occurrences.length ? occurrences[occurrences.length - 1].timestamp : '',
+                    all_occurrences: occurrences,
+                    main_thumbnail: mainThumb
+                });
+            }
+
+            return result.sort((a, b) => a.id - b.id);
         }
 
         function initializeApp() {
@@ -674,24 +757,24 @@
             const allTab = document.createElement('div');
             allTab.className = 'phylum-tab active';
             allTab.textContent = 'Todos';
-            allTab.onclick = () => selectPhylum('');
+            allTab.onclick = (ev) => selectPhylum('', ev);
             tabsContainer.appendChild(allTab);
 
             phyla.forEach(phylum => {
                 const tab = document.createElement('div');
                 tab.className = 'phylum-tab';
                 tab.textContent = phylum;
-                tab.onclick = () => selectPhylum(phylum);
+                tab.onclick = (ev) => selectPhylum(phylum, ev);
                 tabsContainer.appendChild(tab);
             });
         }
 
-        function selectPhylum(phylum) {
+        function selectPhylum(phylum, ev) {
             // Update active tab
             document.querySelectorAll('.phylum-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            event.target.classList.add('active');
+            if (ev && ev.target) ev.target.classList.add('active');
 
             // Update filter
             currentFilters.phylum = phylum;
