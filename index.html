@@ -594,8 +594,8 @@
             try {
                 // 1) Cargar dataset (prefiere el "fixed" si existe)
                 const statsData = await fetchWithFallback([
-                    'biodiversity_results_fixed.json',
-                    'biodiversity_results.json'
+                    'biodiversity_results.json',
+                    'biodiversity_results_fixed.json'
                 ]);
 
                 // 2) Cargar índice de thumbnails si existe
