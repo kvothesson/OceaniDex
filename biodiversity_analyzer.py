@@ -7,6 +7,7 @@ Versión corregida que extrae correctamente los timestamps del formato de subtí
 """
 
 import re
+import unicodedata
 import json
 from typing import List, Dict, Any, Optional, Set
 from datetime import datetime
@@ -22,6 +23,12 @@ class BiodiversityAnalyzerFixed:
         self.species_data = {}
         self.taxonomy_data = {}
         self.unknown_species = []
+        
+        # Normalización se hará con reglas simples (sin diccionario de sinónimos):
+        # - minúsculas
+        # - quitar acentos
+        # - quitar diminutivos (ito/ita/itos/itas)
+        # - singularizar (s/es/ces -> z)
         
         # Patrones base conocidos
         self.base_patterns = {
@@ -300,18 +307,83 @@ class BiodiversityAnalyzerFixed:
         """Crear entrada de especie con metadatos."""
         timestamp = self._find_nearest_timestamp_corrected(text, position)
         context = self._get_context(text, position, 150)
+        canonical_name = self._normalize_common_name(name)
         
         return {
-            "common_name": name,
-            "scientific_name": self._get_scientific_name(name),
+            "common_name": canonical_name,
+            "original_common_name": name,
+            "scientific_name": self._get_scientific_name(canonical_name),
             "phylum": phylum,
-            "class": self._get_class_for_species(name, phylum),
+            "class": self._get_class_for_species(canonical_name, phylum),
             "timestamp": timestamp,
             "context": context,
-            "additional_info": self._get_additional_info(name, context),
+            "additional_info": self._get_additional_info(canonical_name, context),
             "detection_method": "unknown",
             "confidence": 0.5
         }
+
+    def _strip_accents(self, s: str) -> str:
+        """Eliminar acentos/diacríticos para normalizar claves de sinónimos."""
+        normalized = unicodedata.normalize('NFKD', s)
+        return ''.join(c for c in normalized if not unicodedata.combining(c))
+
+    def _normalize_common_name(self, raw_name: str) -> str:
+        """Normalizar nombre común de forma simple y genérica:
+        - minúsculas y espacios colapsados
+        - quitar acentos
+        - quitar diminutivos (ito/ita/itos/itas)
+        - singularizar heurísticamente el último término (ces→z, es luego s)
+        """
+        name = raw_name.strip().lower()
+        name = re.sub(r"\s+", " ", name)
+        name_no_accents = self._strip_accents(name)
+
+        # Excepciones de frases conocidas
+        phrase = name_no_accents
+        if "caballito de mar" in phrase or "caballitos de mar" in phrase:
+            return "caballito de mar"
+
+        tokens = []
+        for t in name_no_accents.split(" "):
+            # Manejar diminutivos comunes: -cito/-cita/-citos/-citas (ej. camaroncito→camaron)
+            t = re.sub(r"(cito|cita|citos|citas)$", "", t)
+            # Manejar -ito/-ita/-itos/-itas de forma conservadora (evitar romper caballito)
+            if re.search(r"(ito|ita|itos|itas)$", t) and len(t) > 4:
+                # Reemplazar sufijo por vocal final aproximada si existe
+                t = re.sub(r"itos$", "os", t)
+                t = re.sub(r"itas$", "as", t)
+                t = re.sub(r"ito$", "o", t)
+                t = re.sub(r"ita$", "a", t)
+            tokens.append(t)
+
+        # Singularizar el último término
+        def singularize(word: str) -> str:
+            if re.search(r"ces$", word):
+                return re.sub(r"ces$", "z", word)
+            if word.endswith("es"):
+                return word[:-2]
+            if re.search(r"[aeiou]s$", word):
+                return word[:-1]
+            return word
+
+        if tokens:
+            tokens[-1] = singularize(tokens[-1])
+
+        normalized = " ".join(tokens).strip()
+
+        # Restaurar acentos en formas canónicas comunes
+        accent_map = {
+            "camaron": "camarón",
+            "crustaceo": "crustáceo",
+            "decapodo": "decápodo",
+            "isopodo": "isópodo",
+            "anfipodo": "anfípodo",
+            "quiton": "quitón",
+            "atun": "atún",
+            "tiburon": "tiburón",
+            "ventonico": "ventónico",
+        }
+        return accent_map.get(normalized, normalized)
     
     def _find_nearest_timestamp_corrected(self, text: str, position: int) -> str:
         """
@@ -429,9 +501,13 @@ class BiodiversityAnalyzerFixed:
             }
         }
         
+        def _norm(s: str) -> str:
+            return self._strip_accents(s.lower())
+
         if phylum in class_map:
+            species_norm = _norm(species_name)
             for key, class_name in class_map[phylum].items():
-                if key in species_name.lower():
+                if _norm(key) in species_norm:
                     return class_name
         
         return "Desconocida"
@@ -459,8 +535,12 @@ class BiodiversityAnalyzerFixed:
             'atún': 'Thunnus', 'pepino de mar': 'Holothuroidea'
         }
         
+        def _norm(s: str) -> str:
+            return self._strip_accents(s.lower())
+
+        name_norm = _norm(common_name)
         for key, scientific_name in scientific_names.items():
-            if key in common_name.lower():
+            if _norm(key) in name_norm:
                 return scientific_name
         
         return ""
