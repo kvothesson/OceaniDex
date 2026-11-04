@@ -1,0 +1,245 @@
+[
+ {
+  "id": 2,
+  "nombre": "caracol",
+  "taxon": "Gastropoda",
+  "citas": [
+   "ahí tenemos al lado un caracol, arriba corales duros.",
+   "esos son los caracoles. Esos son caracoles.",
+   "Un caracolito."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000614.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000620.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000626.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000634.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002805.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002811.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002817.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002825.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/024006.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/024012.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/024018.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/024026.jpg"
+  ]
+ },
+ {
+  "id": 6,
+  "nombre": "ascidia colonial",
+  "taxon": "Ascidiacea",
+  "citas": [
+   "Vamos a intentar tomar esa muestra que colonia tunicados."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002758.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002804.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002810.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002818.jpg"
+  ]
+ },
+ {
+  "id": 10,
+  "nombre": "centolla",
+  "taxon": "Paralomis formosa",
+  "citas": [
+   "Las entollas, hay una por ahí ... En este caso es la Paraalomi Formosa.",
+   "Esa también está esa paraalomis, posiblemente formosa, muy linda.",
+   "Esta centolla tiene por encima, ay, ¿qué está haciendo esta centla?"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011532.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011538.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011544.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011552.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013734.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013740.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013746.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013754.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051411.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051417.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051423.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051431.jpg"
+  ]
+ },
+ {
+  "id": 14,
+  "nombre": "araña de mar",
+  "taxon": "Pycnogonida",
+  "citas": [
+   "Miren un picnogónido. Fíjense, es como una estrella, una araña",
+   "la langosta, un coral, un picnónido.",
+   "Miren esa araña de marla. ¿Ven? Se llama pignogón."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013835.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013841.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013847.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013855.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040813.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040819.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040825.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040833.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/052619.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/052625.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/052631.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/052639.jpg"
+  ]
+ },
+ {
+  "id": 18,
+  "nombre": "langosta",
+  "taxon": "Thymops birsteini",
+  "citas": [
+   "Miren la langosta. Hermosa langosta.",
+   "Bueno, sí, la langosta. Sí, más arriba",
+   "A ver, la langosta, un coral, un picnónido."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021531.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021537.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021543.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021551.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031402.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031408.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031414.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031422.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040813.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040819.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040825.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040833.jpg"
+  ]
+ },
+ {
+  "id": 22,
+  "nombre": "pulpo",
+  "taxon": "Octopoda",
+  "citas": [
+   "Y acá estamos viendo un pulpo en una cuevita.",
+   "Ahí se ve un pulpo. A ver si está encubando.",
+   "Otro pulpo. ... Ay, un pulpo."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030519.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030525.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030531.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030539.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040804.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040810.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040816.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040824.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051022.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051028.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051034.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051042.jpg"
+  ]
+ },
+ {
+  "id": 26,
+  "nombre": "pluma de mar",
+  "taxon": "Pennatulacea",
+  "citas": [
+   "Esto que se ve ahí es un es un coral blando y es un penatuláceo",
+   "había una remolacha blanca. Ah, no es un penatulo.",
+   "Acá estos palitos que estamos viendo e o látigos que están clavados en la arena son todas plumas de mar."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043021.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043027.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043033.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043041.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095408.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095414.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095420.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095428.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101253.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101259.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101305.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101313.jpg"
+  ]
+ },
+ {
+  "id": 30,
+  "nombre": "pez anguiliforme",
+  "taxon": "Anguilliformes",
+  "citas": [
+   "Estamos viendo un anguiliformes, un pez óseo.",
+   "acá abajo en la derecha se están viendo algunos peces. Fíjense, uno está en la cueva. Estos son anguiliformes."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/053731.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/053737.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/053743.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/053751.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064002.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064008.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064014.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064022.jpg"
+  ]
+ },
+ {
+  "id": 34,
+  "nombre": "camarón carideo",
+  "taxon": "Caridea",
+  "citas": [
+   "Ahí estamos viendo un camarón en el medio, camarón carideo."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064347.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064353.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064359.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064407.jpg"
+  ]
+ },
+ {
+  "id": 38,
+  "nombre": "anémona atrapamoscas",
+  "taxon": "Actinoscyphia",
+  "citas": [
+   "ahí vemos una némona. Ahí está en posición amenazante. Sí, es una flight trap.",
+   "Pues mira, hay otra flight trap allí."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072106.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072112.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072118.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072126.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074416.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074422.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074428.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074436.jpg"
+  ]
+ },
+ {
+  "id": 42,
+  "nombre": "coral copa",
+  "taxon": "Scleractinia",
+  "citas": [
+   "Ahí volvemos a tener un top coral de estos que están enterrados en el sustrato. Mírenlo, con cinco individuos."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085641.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085647.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085653.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085701.jpg"
+  ]
+ },
+ {
+  "id": 46,
+  "nombre": "pepino de mar",
+  "taxon": "Benthodytes",
+  "citas": [
+   "¿Qué es ese medio azul grande? Esa es la es el pepino de mar al cual bautizaron",
+   "Miren quién aparece ahí. La batata."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100405.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100411.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100417.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100425.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101825.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101831.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101837.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101845.jpg"
+  ]
+ }
+]

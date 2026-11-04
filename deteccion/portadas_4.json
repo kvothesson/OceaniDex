@@ -1,0 +1,14 @@
+{
+ "4": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/000630.jpg", "seguro": false, "nota": "Masa amarillenta ramificada abajo al centro, posible esponja; poco clara"},
+ "8": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/004906.jpg", "seguro": true, "nota": "Isópodo con antenas largas sobre coral violeta junto a coral blanco"},
+ "12": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/051656.jpg", "seguro": false, "nota": "Corales naranjas colgando de una cornisa; no se confirma que sean primnoides"},
+ "16": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/093728.jpg", "seguro": false, "nota": "Langostilla chica con quelas blancas sobre el sedimento, lejana"},
+ "20": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/022537.jpg", "seguro": true, "nota": "Coral naranja grande en abanico, nítido, en primer plano"},
+ "24": {"foto": null, "seguro": false, "nota": "Solo se ve la canasta de muestras del ROV; la esponja no se distingue"},
+ "28": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/051038.jpg", "seguro": true, "nota": "Cortina de octocorales rosados colgando de una cornisa, nítidos"},
+ "32": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/092342.jpg", "seguro": true, "nota": "Dos corales amarillos ramificados sobre el talud, bien iluminados"},
+ "36": {"foto": null, "seguro": false, "nota": "Sedimento oscuro; los puntitos blancos no se distinguen"},
+ "40": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/075258.jpg", "seguro": false, "nota": "Bolitas pálidas sobre la cornisa, posibles braquiópodos; muy chicos"},
+ "44": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/092102.jpg", "seguro": false, "nota": "Parte de un pez grande pálido saliendo por el borde izquierdo"},
+ "48": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/104358.jpg", "seguro": false, "nota": "Pez chico apoyado en el fondo, lejano y borroso"}
+}

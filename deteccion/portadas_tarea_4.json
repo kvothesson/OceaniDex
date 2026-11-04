@@ -1,0 +1,225 @@
+[
+ {
+  "id": 4,
+  "nombre": "esponja",
+  "taxon": "Porifera",
+  "citas": [
+   "chusar. Ahí esponjas, corales blandos.",
+   "esponja, la esponja, perdón.",
+   "Esto que es una esponja."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000630.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000636.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000642.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000650.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/023840.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/023846.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/023852.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/023900.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031357.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031403.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031409.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031417.jpg"
+  ]
+ },
+ {
+  "id": 8,
+  "nombre": "isópodo",
+  "taxon": "Valvifera",
+  "citas": [
+   "Ay, miren, tiene un isópodo arriba. Miren, el crustáceo que tiene arriba que mueve sus antenas",
+   "arriba de ese coral blando, color violeta, se puede ver las antenas de un ... ese valvífero sobre un coral blando"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004846.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004852.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004858.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004906.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/045943.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/045949.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/045955.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/050003.jpg"
+  ]
+ },
+ {
+  "id": 12,
+  "nombre": "coral primnoide",
+  "taxon": "Primnoidae",
+  "citas": [
+   "Ay, miren, un primodio, qué lindo. ¿Ven ese que está ahí que es muy largo a la izquierda?",
+   "Mucho primnoide, mucho",
+   "esos que son más naranjas ... me parece que son primidos, que son el grupo que yo trabajo"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012444.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012450.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012456.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012504.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022810.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022816.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022822.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022830.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051656.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051702.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051708.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051716.jpg"
+  ]
+ },
+ {
+  "id": 16,
+  "nombre": "langostilla",
+  "taxon": "Galatheoidea",
+  "citas": [
+   "Miren qué hermosura, chicos. Esto es un es una langostilla.",
+   "Ya hay otra langosta.",
+   "Están estos cangrejos con las tenazas largas. No sé qué grupo es."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014132.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014138.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014144.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014152.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/093716.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/093722.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/093728.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/093736.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094502.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094508.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094514.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094522.jpg"
+  ]
+ },
+ {
+  "id": 20,
+  "nombre": "coral naranja",
+  "taxon": "Anthozoa",
+  "citas": [
+   "Sí, coral naranja lo que me dicen ya lo tenemos"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022531.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022537.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022543.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022551.jpg"
+  ]
+ },
+ {
+  "id": 24,
+  "nombre": "esponja vítrea",
+  "taxon": "Hexactinellida",
+  "citas": [
+   "ahí acabamos de coleccionar un porífero ... Recién capturamos una esponja vitrea con una estrella de mar encima"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032341.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032347.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032353.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032401.jpg"
+  ]
+ },
+ {
+  "id": 28,
+  "nombre": "octocoral",
+  "taxon": "Octocorallia",
+  "citas": [
+   "todos opctorales. Sí, corales blandos en color naranja. Fíjense el crecimiento hacia abajo.",
+   "También se ven algunos octocorales. Son octocorales esos de colores",
+   "Sí, es un octo coral también."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051032.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051038.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051044.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051052.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/055958.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060004.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060010.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060018.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074210.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074216.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074222.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074230.jpg"
+  ]
+ },
+ {
+  "id": 32,
+  "nombre": "coral amarillo",
+  "taxon": "Anthozoa",
+  "citas": [
+   "Ahí hay otro coral amarillito.",
+   "los organismos que son planos como estos corales amarillos, en general se ponen perpendicular a la corriente neta.",
+   "Vuelven a aparecer otra vez estos corales amarillos"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060009.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060015.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060021.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060029.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074301.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074307.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074313.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/074321.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092342.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092348.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092354.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092402.jpg"
+  ]
+ },
+ {
+  "id": 36,
+  "nombre": "foraminífero",
+  "taxon": "Foraminifera",
+  "citas": [
+   "si ven esos puntitos blanquitos eh en el sedimento, lo más probable es que sean foramíferos."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/065748.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/065754.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/065800.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/065808.jpg"
+  ]
+ },
+ {
+  "id": 40,
+  "nombre": "braquiópodo",
+  "taxon": "Brachiopoda",
+  "citas": [
+   "Creo que son vibalos. Mira, un montón. ¿Qué sigo? Braqueópedo medio transparente"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075246.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075252.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075258.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075306.jpg"
+  ]
+ },
+ {
+  "id": 44,
+  "nombre": "merluza negra",
+  "taxon": "Dissostichus eleginoides",
+  "citas": [
+   "Eso era grande. una marluza negra. ... qué increíble eso. Un pez enorme."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092050.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092056.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092102.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092110.jpg"
+  ]
+ },
+ {
+  "id": 48,
+  "nombre": "congrio espinoso",
+  "taxon": "Actinopterygii",
+  "citas": [
+   "hay uno de los que es mucho más robusto, creo que es un com espinoso. ... Congrio espinoso."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/104352.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/104358.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/104404.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/104412.jpg"
+  ]
+ }
+]

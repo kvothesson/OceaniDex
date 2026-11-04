@@ -60,3 +60,5 @@ secrets.json
 # Large data files (if needed)
 # *.csv
 # *.json (uncomment if you don't want to track results) 
+# Cuadros crudos del video (se regeneran con deteccion/frames.py)
+deteccion/cache/

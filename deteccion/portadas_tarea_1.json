@@ -1,0 +1,269 @@
+[
+ {
+  "id": 1,
+  "nombre": "coral blando",
+  "taxon": "Alcyonacea",
+  "citas": [
+   "lo vemos ahí, es un coral divino, vemos coral blando cayendo",
+   "Lo violeta que ven ahí también son corales blandos.",
+   "Un montón de corales, todos distintos. ... esos corales tienen un eje, ese eje de proteína."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000612.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000618.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000624.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000632.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/001421.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/001427.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/001433.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/001441.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004653.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004659.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004705.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004713.jpg"
+  ]
+ },
+ {
+  "id": 5,
+  "nombre": "anémona",
+  "taxon": "Actiniaria",
+  "citas": [
+   "la pinza va a ir a agarrar esa columna que ven ahí. Eso es una némona.",
+   "Fíjense, eso que ven allá atrás es una némona esa que está como un abanico hacia abajo",
+   "estamos tomando una muestra de la némona esa"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002055.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002101.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002107.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/002115.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021222.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021228.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021234.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021242.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032829.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032835.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032841.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/032849.jpg"
+  ]
+ },
+ {
+  "id": 9,
+  "nombre": "estrella de mar",
+  "taxon": "Asteroidea",
+  "citas": [
+   "Wow, ¿vieron la estrella? Esa estaba zarpada.",
+   "una esponja, perdón, una estrella",
+   "Estella. Estrella."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011257.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011303.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011309.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/011317.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031714.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031720.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031726.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031734.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100156.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100202.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100208.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100216.jpg"
+  ]
+ },
+ {
+  "id": 13,
+  "nombre": "camarón",
+  "taxon": "Decapoda",
+  "citas": [
+   "Ahí a la izquierda estábamos viendo un camaroncito, también es un crustáceo, también es un decápado",
+   "Un camarón."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013421.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013427.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013433.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/013441.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094415.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094421.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094427.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/094435.jpg"
+  ]
+ },
+ {
+  "id": 17,
+  "nombre": "hidrozoo",
+  "taxon": "Hydrozoa",
+  "citas": [
+   "van a ver unos plumeritos que son como unas plantitas blanquitas. Esos se llaman hidrosos",
+   "le voy a pedir a Diego que haga un zoom en las florcitas que están atrás, que son hidroszoas",
+   "Ahí hay un cangrejo y hay unos hidrosoa."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021458.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021504.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021510.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/021518.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/025423.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/025429.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/025435.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/025443.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092604.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092610.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092616.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092624.jpg"
+  ]
+ },
+ {
+  "id": 21,
+  "nombre": "anfípodo",
+  "taxon": "Amphipoda",
+  "citas": [
+   "hay uno que tiene un tubito en donde hay un anfípodo arriba",
+   "Los camaroncitos esos que son unos míidos, creo ... Son anfípodos",
+   "Son los mismos anfípodos."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030231.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030237.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030243.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/030251.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031032.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031038.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031044.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031052.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040918.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040924.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040930.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040938.jpg"
+  ]
+ },
+ {
+  "id": 25,
+  "nombre": "cangrejo anomuro",
+  "taxon": "Anomura",
+  "citas": [
+   "preguntan por el cangrejo. El cangrejo está quedó en la aspiradora",
+   "Tenemos un cangrejo ahí en la aspiradora que está como una cuevita."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/033333.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/033339.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/033345.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/033353.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060944.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060950.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060956.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/061004.jpg"
+  ]
+ },
+ {
+  "id": 29,
+  "nombre": "cirripedio",
+  "taxon": "Cirripedia",
+  "citas": [
+   "esos puntitos blancos son otros crustáceos que viven encima ... tenían un piecito blando que llama pedúnculo",
+   "En la pata de adelante hay una lepa, un cirripedio chiquitito,"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051429.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051435.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051441.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/051449.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092913.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092919.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092925.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092933.jpg"
+  ]
+ },
+ {
+  "id": 33,
+  "nombre": "remolacha",
+  "taxon": "Anthomastus",
+  "citas": [
+   "Ahí vemos alguno que le llaman el la remolacha, que es un octocoral blando, en este caso, que es eso rojo.",
+   "Un pepino. Ese es Ah, no es una remolacha. Fíjense que la remolacha tiene todos los pólipos metidos para dentro.",
+   "ahora que veo las remolachas, eh, ya te digo que solo vamos a encontrar remolachas por un rato."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060120.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060126.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060132.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060140.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091836.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091842.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091848.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091856.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095246.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095252.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095258.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/095306.jpg"
+  ]
+ },
+ {
+  "id": 37,
+  "nombre": "raya",
+  "taxon": "Rajiformes",
+  "citas": [
+   "No, ahí está apareciendo una raya.",
+   "A ver si alguien se anima a decir si es hembra o macho. ... ¿Qué raya es?",
+   "Hay una raya."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/070617.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/070623.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/070629.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/070637.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092018.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092024.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092030.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092038.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100308.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100314.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100320.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/100328.jpg"
+  ]
+ },
+ {
+  "id": 41,
+  "nombre": "escafópodo",
+  "taxon": "Scaphopoda",
+  "citas": [
+   "son escafopodos esos, ¿no? Sí. Ajá. Y un montón."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/081516.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/081522.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/081528.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/081536.jpg"
+  ]
+ },
+ {
+  "id": 45,
+  "nombre": "caprélido",
+  "taxon": "Caprellidae",
+  "citas": [
+   "en el tercer par del lado derecho también está el caprélido"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092927.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092933.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092939.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092947.jpg"
+  ]
+ },
+ {
+  "id": 49,
+  "nombre": "caracol marginélido",
+  "taxon": "Volvarina",
+  "citas": [
+   "todos esos caracolitos que están viendo ahí. Son caracoles de la familia marginélide"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/115227.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/115233.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/115239.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/115247.jpg"
+  ]
+ }
+]

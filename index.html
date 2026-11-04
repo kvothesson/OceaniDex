@@ -1,1043 +1,413 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌊 OceaniDex - Pokédex de Biodiversidad Marina</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 1rem;
-        }
-
-        .controls {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .controls-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            align-items: end;
-        }
-
-        .control-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .control-group label {
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .control-group select,
-        .control-group input {
-            padding: 10px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .control-group select:focus,
-        .control-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .search-box {
-            grid-column: 1 / -1;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px;
-            font-size: 1.1rem;
-        }
-
-        .phylum-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .phylum-tab {
-            background: #f8f9fa;
-            border: 2px solid #e1e5e9;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .phylum-tab:hover {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .phylum-tab.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .species-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 20px;
-        }
-
-        .species-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border-left: 5px solid #667eea;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .species-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .species-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .species-info {
-            flex: 1;
-        }
-
-        .species-id {
-            font-size: 0.9rem;
-            color: #667eea;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .species-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .species-scientific {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-
-        .thumbnail-container {
-            width: 120px;
-            height: 90px;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #e1e5e9;
-            flex-shrink: 0;
-        }
-
-        .thumbnail-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .thumbnail-image:hover {
-            transform: scale(1.05);
-        }
-
-        .thumbnail-placeholder {
-            color: #999;
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .species-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .detail-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .detail-label {
-            font-size: 0.8rem;
-            color: #999;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .detail-value {
-            font-size: 1rem;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .occurrences-info {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .occurrences-count {
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-        }
-
-        .modal-content {
-            position: relative;
-            margin: auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 1000px;
-            max-height: 90%;
-            top: 50%;
-            transform: translateY(-50%);
-            background: white;
-            border-radius: 15px;
-            overflow-y: auto;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            z-index: 1001;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .modal-header {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .modal-species-name {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .modal-species-scientific {
-            font-size: 1.2rem;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .modal-taxonomy {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .modal-image-gallery {
-            margin-bottom: 30px;
-        }
-
-        .gallery-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .gallery-nav {
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav-btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: #5a6fd8;
-        }
-
-        .nav-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        .current-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .occurrences-list {
-            margin-top: 20px;
-        }
-
-        .occurrence-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        .occurrence-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .occurrence-timestamp {
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .occurrence-confidence {
-            background: #667eea;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-        }
-
-        .occurrence-context {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 50px;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .error {
-            background: #ff6b6b;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 50px;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .footer {
-            text-align: center;
-            color: white;
-            margin-top: 50px;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .species-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .controls-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .species-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .thumbnail-container {
-                width: 100%;
-                height: 120px;
-            }
-
-            .modal-content {
-                width: 95%;
-                padding: 15px;
-            }
-
-            .modal-species-name {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OceaniDex</title>
+<meta name="description" content="Todo lo que vio el ROV en el cañón submarino de Mar del Plata, con foto, profundidad y el segundo exacto del video.">
+<meta property="og:title" content="OceaniDex">
+<meta property="og:description" content="Lo que vio el ROV en el cañón de Mar del Plata, a 2400 metros.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cpath d='M80 14 137.2 47v66L80 146l-57.2-33V47z' fill='%235ce1ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="marca.css">
+<style>
+* { box-sizing: border-box; margin: 0; }
+[hidden] { display: none !important; }
+body { background: var(--ground); color: var(--ink); font: 15px/1.45 var(--font-sans); min-height: 100vh; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--muted); }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--space-3); }
+
+header { padding: var(--space-5) 0 var(--space-3); display: flex; gap: var(--space-3); align-items: flex-end; justify-content: space-between; flex-wrap: wrap; }
+h1 { font: 800 clamp(34px, 6vw, 56px)/1 var(--font-display); letter-spacing: -.02em; }
+.frase { font: 600 clamp(17px, 2.4vw, 21px)/1.25 var(--font-display); color: var(--muted); margin-top: var(--space-2); max-width: 34ch; }
+.cifras { display: flex; gap: var(--space-4); }
+.cifra b { display: block; font: 600 26px/1 var(--font-mono); }
+.cifra span { font-size: 12px; color: var(--muted); }
+
+/* Perfil de la inmersion */
+.perfil { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); padding: var(--space-3); margin: var(--space-3) 0; }
+.perfil-cab { display: flex; justify-content: space-between; gap: var(--space-2); font-size: 13px; color: var(--muted); margin-bottom: var(--space-2); }
+.perfil svg { width: 100%; height: 190px; display: block; overflow: visible; }
+.perfil .agua { fill: url(#hondo); }
+.perfil .linea { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.perfil .punto { fill: var(--accent); stroke: var(--ground); stroke-width: 1.5; cursor: pointer; transition: r .12s; }
+.perfil .punto:hover, .perfil .punto.on { r: 7; }
+.perfil .eje { font: 11px var(--font-mono); fill: var(--muted); }
+.perfil .grilla { stroke: var(--line); stroke-dasharray: 2 4; }
+.globo { position: fixed; pointer-events: none; background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-s); padding: 6px 10px; font-size: 13px; white-space: nowrap; opacity: 0; transition: opacity .1s; z-index: 5; }
+
+/* Herramientas */
+.barra { position: sticky; top: 0; z-index: 3; background: var(--ground); padding: var(--space-2) 0; display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--line); }
+.buscar { flex: 1 1 220px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-full); padding: 8px 14px; background: var(--surface); }
+.buscar input { border: 0; background: none; outline: none; width: 100%; }
+select { background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius-full); padding: 8px 12px; }
+.chips { display: flex; gap: 6px; overflow-x: auto; padding: var(--space-2) 0; scrollbar-width: none; }
+.chip { flex: none; border: 1px solid var(--line); background: none; border-radius: var(--radius-full); padding: 6px 12px; cursor: pointer; font-size: 13px; }
+.chip span { color: var(--muted); font-family: var(--font-mono); margin-left: 4px; }
+.chip[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.progreso { font-size: 13px; color: var(--muted); }
+.progreso b { color: var(--ink); font-family: var(--font-mono); }
+
+/* Grilla */
+.grilla-esp { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-3); padding: var(--space-3) 0 var(--space-5); }
+.carta { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); overflow: hidden; cursor: pointer; text-align: left; padding: 0; transition: border-color .12s, transform .12s; position: relative; }
+.carta:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.carta img, .carta .sinfoto { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--surface-raised); }
+.carta .cuerpo { padding: 10px 12px 12px; }
+.carta .num { font: 12px var(--font-mono); color: var(--muted); }
+.carta h3 { font-size: 16px; font-weight: 600; margin: 2px 0; }
+.carta h3::first-letter, .ficha h2::first-letter { text-transform: uppercase; }
+.carta .tax { font-style: italic; color: var(--muted); font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.carta .pie { display: flex; justify-content: space-between; margin-top: 8px; font: 12px var(--font-mono); color: var(--muted); }
+.carta .visto { position: absolute; top: 8px; right: 8px; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: none; place-items: center; }
+.carta.vista .visto { display: grid; }
+.vacio { padding: var(--space-5) 0; text-align: center; color: var(--muted); }
+
+/* Ficha */
+dialog { margin: auto; border: 1px solid var(--line-strong); border-radius: var(--radius-m); background: var(--surface); color: var(--ink); padding: 0; width: min(880px, calc(100vw - 24px)); max-height: calc(100vh - 24px); }
+dialog::backdrop { background: rgba(2, 5, 9, .8); }
+.visor { position: relative; background: #000; aspect-ratio: 16/9; }
+.visor img, .visor iframe { width: 100%; height: 100%; object-fit: contain; border: 0; display: block; }
+.flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong); background: rgba(4, 8, 13, .7); cursor: pointer; display: grid; place-items: center; }
+.flecha.izq { left: 10px; } .flecha.der { right: 10px; }
+.contador { position: absolute; bottom: 10px; right: 10px; background: rgba(4, 8, 13, .75); border-radius: var(--radius-full); padding: 3px 10px; font: 12px var(--font-mono); }
+.cerrar { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-strong); background: rgba(4, 8, 13, .7); cursor: pointer; display: grid; place-items: center; z-index: 2; }
+.ficha { padding: var(--space-3) var(--space-4) var(--space-4); display: grid; gap: var(--space-3); }
+.ficha h2 { font: 800 30px/1.05 var(--font-display); }
+.ficha .tax { font-style: italic; color: var(--muted); }
+.datos { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.dato { border: 1px solid var(--line); border-radius: var(--radius-s); padding: 6px 10px; }
+.dato b { display: block; font: 600 16px var(--font-mono); }
+.dato span { font-size: 12px; color: var(--muted); }
+blockquote { border-left: 2px solid var(--line-strong); padding-left: 12px; color: var(--muted); }
+.acciones { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
+.btn { border: 1px solid var(--line-strong); background: none; border-radius: var(--radius-full); padding: 9px 16px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; text-decoration: none; font-size: 14px; }
+.btn.prin { background: var(--accent); color: var(--on-accent); border-color: var(--accent); font-weight: 600; }
+.btn[aria-pressed="true"] { border-color: var(--ok); color: var(--ok); }
+.curioso { background: var(--surface-raised); border-radius: var(--radius-s); padding: 10px 12px; font-size: 14px; }
+
+footer { border-top: 1px solid var(--line); padding: var(--space-4) 0 var(--space-5); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+.firma { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); }
+svg.ic { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.latido { animation: latido .5s ease-out; }
+@keyframes latido { 50% { transform: scale(1.25); } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+@media (max-width: 600px) {
+  .cifras { gap: var(--space-3); }
+  .grilla-esp { grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
+  .carta h3 { font-size: 14px; }
+  .ficha { padding: var(--space-3); }
+  .perfil svg { height: 150px; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🌊 OceaniDex</h1>
-            <p>Pokédex de Biodiversidad Marina - Expedición Cañón de Mar del Plata</p>
-        </div>
-
-        <div class="stats-grid" id="statsGrid">
-            <div class="stat-card">
-                <div class="stat-number" id="totalSpecies">-</div>
-                <div class="stat-label">Total de Especies</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="totalPhyla">-</div>
-                <div class="stat-label">Filos Detectados</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="unknownSpecies">-</div>
-                <div class="stat-label">Especies Nuevas</div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <div class="controls-grid">
-                <div class="control-group search-box">
-                    <label for="searchInput">🔍 Buscar Especies</label>
-                    <input type="text" id="searchInput" placeholder="Escribe el nombre de una especie...">
-                </div>
-                <div class="control-group">
-                    <label for="phylumFilter">🦠 Filtrar por Filo</label>
-                    <select id="phylumFilter">
-                        <option value="">Todos los filos</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <label for="methodFilter">🔬 Filtrar por Método</label>
-                    <select id="methodFilter">
-                        <option value="">Todos los métodos</option>
-                        <option value="known_pattern">Patrones Conocidos</option>
-                        <option value="scientific_name">Nombres Científicos</option>
-                        <option value="scientific_context">Contexto Científico</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="phylum-tabs" id="phylumTabs">
-            <!-- Tabs will be generated dynamically -->
-        </div>
-
-        <div id="speciesContainer">
-            <div class="loading">Cargando OceaniDex...</div>
-        </div>
-
-        <div class="footer">
-            <p>🌊 Herramienta de análisis tipo Pokédex para científicos e investigadores marinos</p>
-        </div>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>OceaniDex</h1>
+      <p class="frase">Todo lo que vio el ROV en el cañón de Mar del Plata.</p>
     </div>
-
-    <!-- Modal para mostrar detalles de especie -->
-    <div id="speciesModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="modalContent">
-                <!-- Content will be generated dynamically -->
-            </div>
-        </div>
+    <div class="cifras">
+      <div class="cifra"><b id="nEsp">–</b><span>organismos</span></div>
+      <div class="cifra"><b id="nAvi">–</b><span>avistajes</span></div>
+      <div class="cifra"><b id="nProf">–</b><span>metros de fondo</span></div>
     </div>
+  </header>
 
-    <script>
-        let biodiversityData = null;
-        let filteredSpecies = [];
-        let currentFilters = {
-            search: '',
-            phylum: '',
-            method: ''
-        };
-        let currentSpecies = null;
-        let currentImageIndex = 0;
+  <section class="perfil" aria-label="Perfil de la inmersión">
+    <div class="perfil-cab"><span>La inmersión: profundidad a lo largo de 12 horas de video</span><span>Tocá un punto</span></div>
+    <svg id="perfil" role="img" aria-label="Profundidad del ROV en el tiempo, con cada avistaje marcado"></svg>
+  </section>
 
-        // Cargar datos (modo estático para GitHub Pages)
-        async function loadBiodiversityData() {
-            try {
-                // 1) Cargar dataset (prefiere el "fixed" si existe)
-                const statsData = await fetchWithFallback([
-                    'biodiversity_results.json',
-                    'biodiversity_results_fixed.json'
-                ]);
+  <div class="barra">
+    <label class="buscar"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="q" type="search" placeholder="Buscar: pulpo, coral, Paralomis…" autocomplete="off"></label>
+    <select id="orden" aria-label="Ordenar">
+      <option value="aparicion">Orden de aparición</option>
+      <option value="vistas">Más vistas</option>
+      <option value="hondo">Más profundas</option>
+      <option value="nombre">Por nombre</option>
+    </select>
+    <span class="progreso" id="progreso"></span>
+  </div>
+  <div class="chips" id="chips" role="group" aria-label="Grupos"></div>
+  <main class="grilla-esp" id="grilla"></main>
 
-                // 2) Cargar índice de thumbnails si existe
-                let thumbnailsIndex = {};
-                try {
-                    const r = await fetch('thumbnails/thumbnails_index.json');
-                    if (r.ok) thumbnailsIndex = await r.json();
-                } catch (_) {}
+  <footer>
+    <div>Transmisión de <a href="https://www.youtube.com/watch?v=Fa-iwwxiDr0">Schmidt Ocean Institute</a> con el CONICET, expedición Talud Continental IV, 2025.
+      Organismos leídos de lo que dicen los científicos en vivo.<br>
+      <a href="oceanidex.csv" download>Bajar los datos (CSV)</a> · <a href="https://github.com/kvothesson/OceaniDex">Código</a></div>
+    <div class="firma"><svg width="18" height="18" viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round"><path d="M80 14 137.2 47v66L80 146l-57.2-33V47z"/></svg>hecho por Kvothesson</div>
+  </footer>
+</div>
 
-                // 3) Generar en cliente los datos agrupados tipo Pokédex
-                const speciesData = buildGroupedSpecies(statsData.species_data || [], thumbnailsIndex);
+<div class="globo" id="globo"></div>
 
-                // 4) Combinar datos
-                biodiversityData = {
-                    ...statsData,
-                    species_data: speciesData
-                };
+<dialog id="dlg" aria-labelledby="fNombre">
+  <div class="visor" id="visor">
+    <img id="fFoto" alt="">
+    <button class="flecha izq" id="ant" aria-label="Foto anterior"><svg class="ic" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button class="flecha der" id="sig" aria-label="Foto siguiente"><svg class="ic" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+    <span class="contador" id="fCont"></span>
+    <button class="cerrar" id="cerrar" aria-label="Cerrar"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="ficha">
+    <div>
+      <span class="mono muted" id="fNum"></span>
+      <h2 id="fNombre"></h2>
+      <div class="tax" id="fTax"></div>
+    </div>
+    <div class="datos" id="fDatos"></div>
+    <blockquote id="fCita"></blockquote>
+    <p class="muted" id="fNota" style="font-size:13px;margin-top:-8px"></p>
+    <div class="curioso" id="fDato"></div>
+    <div class="acciones">
+      <button class="btn prin" id="verVideo"><svg class="ic" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>Ver en el video</button>
+      <button class="btn" id="laVi" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Ya la vi</button>
+      <a class="btn" id="fWorms" target="_blank" rel="noopener">Buscar en WoRMS</a>
+      <button class="btn" id="compartir"><svg class="ic" viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/></svg>Compartir</button>
+    </div>
+  </div>
+</dialog>
 
-                console.log(`📊 Cargadas ${speciesData.length} especies agrupadas tipo Pokédex (cliente)`);
-                initializeApp();
-            } catch (error) {
-                console.error('❌ Error cargando datos:', error);
-                document.getElementById('speciesContainer').innerHTML = 
-                    '<div class="error">❌ Error al cargar los datos. Si es la primera vez, espera unos segundos a que GitHub Pages termine de publicar y recarga.</div>';
-            }
-        }
+<script>
+const $ = id => document.getElementById(id);
+let datos, especies = [], filtro = { q: '', grupo: '', orden: 'aparicion' }, actual = null, foto = 0;
 
-        async function fetchWithFallback(paths) {
-            let lastError = null;
-            for (const p of paths) {
-                try {
-                    const res = await fetch(p);
-                    if (res.ok) return await res.json();
-                    lastError = new Error(`${p}: ${res.status}`);
-                } catch (e) {
-                    lastError = e;
-                }
-            }
-            throw lastError || new Error('No se pudo cargar ningún JSON');
-        }
+const leerVistas = () => { try { return new Set(JSON.parse(localStorage.getItem('oceanidex.vistas') || '[]')); } catch { return new Set(); } };
+const guardarVistas = s => { try { localStorage.setItem('oceanidex.vistas', JSON.stringify([...s])); } catch {} };
+let vistas = leerVistas();
 
-        function buildGroupedSpecies(speciesList, thumbnailsIndex) {
-            const byCommon = new Map();
+const hms = s => [s / 3600 | 0, (s % 3600) / 60 | 0, s % 60].map(n => String(n).padStart(2, '0')).join(':');
+const metros = m => m == null ? '–' : Math.round(m).toLocaleString('es-AR');
+const sinAcentos = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const slug = e => sinAcentos(e.nombre).replace(/[^a-z0-9]+/g, '-');
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-            for (const s of speciesList) {
-                const common = (s.common_name || '').toLowerCase();
-                if (!common) continue;
+async function cargar() {
+  try {
+    datos = await (await fetch('oceanidex.json')).json();
+  } catch {
+    $('grilla').innerHTML = '<p class="vacio">No se pudieron cargar los datos. Recargá la página.</p>';
+    return;
+  }
+  especies = datos.especies;
+  const todos = especies.flatMap(e => e.avistajes);
+  $('nEsp').textContent = especies.length;
+  $('nAvi').textContent = todos.length;
+  $('nProf').textContent = metros(Math.max(...datos.perfil.map(p => p[1])));
+  armarChips();
+  dibujarPerfil();
+  pintar();
+  abrirDesdeUrl();
+}
 
-                // Asignar thumbnail si hay timestamp en índice
-                const ts = s.timestamp || '';
-                let thumbUrl = null;
-                if (ts && thumbnailsIndex && thumbnailsIndex[ts]) {
-                    let filename = thumbnailsIndex[ts];
-                    if (typeof filename === 'string' && filename.includes('/')) {
-                        filename = filename.split('/').pop();
-                    }
-                    if (filename) thumbUrl = `thumbnails/${filename}`;
-                }
+function armarChips() {
+  const cuenta = {};
+  especies.forEach(e => cuenta[e.grupo] = (cuenta[e.grupo] || 0) + 1);
+  const grupos = Object.keys(cuenta).sort((a, b) => cuenta[b] - cuenta[a]);
+  const chip = (g, txt, n) => `<button class="chip" data-g="${esc(g)}" aria-pressed="${filtro.grupo === g}">${esc(txt)}<span>${n}</span></button>`;
+  $('chips').innerHTML = chip('', 'Todos', especies.length) + grupos.map(g => chip(g, g, cuenta[g])).join('');
+}
 
-                const entry = {
-                    timestamp: s.timestamp || '',
-                    context: s.context || '',
-                    additional_info: s.additional_info || '',
-                    thumbnail_url: thumbUrl,
-                    confidence: s.confidence || 0,
-                    detection_method: s.detection_method || ''
-                };
+function visibles() {
+  const q = sinAcentos(filtro.q.trim());
+  const lista = especies.filter(e =>
+    (!filtro.grupo || e.grupo === filtro.grupo) &&
+    (!q || sinAcentos(`${e.nombre} ${e.taxon} ${e.filo} ${e.grupo}`).includes(q)));
+  const por = {
+    aparicion: (a, b) => a.id - b.id,
+    vistas: (a, b) => b.avistajes.length - a.avistajes.length || a.id - b.id,
+    hondo: (a, b) => (b.prof_max ?? -1) - (a.prof_max ?? -1),
+    nombre: (a, b) => a.nombre.localeCompare(b.nombre, 'es'),
+  };
+  return lista.sort(por[filtro.orden]);
+}
 
-                if (!byCommon.has(common)) byCommon.set(common, []);
-                byCommon.get(common).push({ ...s, thumbnail_url: thumbUrl, _occ: entry });
-            }
+function pintar() {
+  const lista = visibles();
+  $('progreso').innerHTML = `Viste <b>${especies.filter(e => vistas.has(slug(e))).length}</b> de <b>${especies.length}</b>`;
+  if (!lista.length) {
+    $('grilla').innerHTML = `<p class="vacio">No hay nada con “${esc(filtro.q)}”. Probá con otro nombre o el grupo Todos.</p>`;
+    return;
+  }
+  $('grilla').innerHTML = lista.map(e => {
+    const img = e.avistajes[e.portada ?? 0]?.foto || e.avistajes.find(a => a.foto)?.foto;
+    const prof = e.prof_max ? `${metros(e.prof_max)} m` : '';
+    return `<button class="carta${vistas.has(slug(e)) ? ' vista' : ''}" data-id="${e.id}">
+      ${img ? `<img src="${img}" alt="" loading="lazy">` : '<div class="sinfoto"></div>'}
+      <span class="visto" aria-label="Ya la viste"><svg class="ic" viewBox="0 0 24 24" style="width:14px;height:14px"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <div class="cuerpo">
+        <div class="num">#${String(e.id).padStart(3, '0')}</div>
+        <h3>${esc(e.nombre)}</h3>
+        <div class="tax">${esc(e.taxon || e.filo)}</div>
+        <div class="pie"><span>${e.avistajes.length} ${e.avistajes.length === 1 ? 'vez' : 'veces'}</span><span>${prof}</span></div>
+      </div></button>`;
+  }).join('');
+}
 
-            const result = [];
-            for (const [common, list] of byCommon.entries()) {
-                if (!list.length) continue;
-                const main = list[0];
-                const occurrences = list.map(x => x._occ).sort((a, b) => (a.timestamp || '').localeCompare(b.timestamp || ''));
+function dibujarPerfil() {
+  const svg = $('perfil'), W = 1000, H = 190, pad = { l: 46, r: 8, t: 8, b: 20 };
+  const perfil = datos.perfil, fin = Math.max(...perfil.map(p => p[0]), 1);
+  // El eje arranca cerca del punto mas alto: la gracia es ver como sube y baja por la pared del cañon.
+  const hondo = Math.ceil(Math.max(...perfil.map(p => p[1])) / 100) * 100;
+  const alto = Math.floor(Math.min(...perfil.map(p => p[1])) / 100) * 100 - 100;
+  const paso = hondo - alto > 800 ? 500 : 100;
+  const x = s => pad.l + s / fin * (W - pad.l - pad.r), y = d => pad.t + (d - alto) / (hondo - alto) * (H - pad.t - pad.b);
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('preserveAspectRatio', 'none');
+  const prof = s => { // profundidad interpolada en un segundo del video
+    let i = perfil.findIndex(p => p[0] >= s);
+    if (i <= 0) return perfil[Math.max(i, 0)][1];
+    if (i === -1) return perfil[perfil.length - 1][1];
+    const [s0, d0] = perfil[i - 1], [s1, d1] = perfil[i];
+    return d0 + (d1 - d0) * (s - s0) / (s1 - s0);
+  };
+  let html = `<defs><linearGradient id="hondo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".02"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".16"/></linearGradient></defs>`;
+  for (let d = alto; d <= hondo; d += paso)
+    html += `<line class="grilla" x1="${pad.l}" x2="${W - pad.r}" y1="${y(d)}" y2="${y(d)}"/><text class="eje" x="${pad.l - 6}" y="${y(d) + 4}" text-anchor="end">${d}</text>`;
+  for (let h = 0; h * 3600 <= fin; h += 2)
+    html += `<text class="eje" x="${x(h * 3600)}" y="${H - 4}" text-anchor="middle">${h}h</text>`;
+  const pts = perfil.map(p => `${x(p[0]).toFixed(1)},${y(p[1]).toFixed(1)}`).join(' ');
+  html += `<polygon class="agua" points="${x(perfil[0][0])},${y(alto)} ${pts} ${x(perfil[perfil.length - 1][0])},${y(alto)}"/><polyline class="linea" points="${pts}"/>`;
+  especies.forEach(e => e.avistajes.forEach((a, i) => {
+    const d = a.depth ?? prof(a.seg);
+    html += `<circle class="punto" r="4.5" cx="${x(a.seg).toFixed(1)}" cy="${y(d).toFixed(1)}" data-id="${e.id}" data-i="${i}" data-txt="${esc(e.nombre)} · ${metros(d)} m"/>`;
+  }));
+  svg.innerHTML = html;
+  // Los circulos se estiran con preserveAspectRatio=none: se corrige escalando el radio a lo ancho real.
+  new ResizeObserver(() => {
+    const k = svg.clientWidth / W, kh = svg.clientHeight / H;
+    svg.querySelectorAll('.punto').forEach(c => c.setAttribute('transform', `translate(${c.getAttribute('cx')} ${c.getAttribute('cy')}) scale(${kh / k} 1) translate(${-c.getAttribute('cx')} ${-c.getAttribute('cy')})`));
+    svg.querySelectorAll('.eje').forEach(t => t.setAttribute('transform', `translate(${t.getAttribute('x')} ${t.getAttribute('y')}) scale(${kh / k} 1) translate(${-t.getAttribute('x')} ${-t.getAttribute('y')})`));
+  }).observe(svg);
+}
 
-                // Elegir primer thumbnail disponible como principal
-                let mainThumb = null;
-                for (const occ of occurrences) {
-                    if (occ.thumbnail_url) { mainThumb = occ.thumbnail_url; break; }
-                }
+function abrir(e, i = 0, empujar = true) {
+  actual = e; foto = i;
+  $('fNum').textContent = `#${String(e.id).padStart(3, '0')} · ${e.grupo}`;
+  $('fNombre').textContent = e.nombre;
+  $('fTax').textContent = [e.taxon, e.filo].filter(Boolean).join(' · ');
+  $('fDato').textContent = e.dato;
+  $('fDato').hidden = !e.dato;
+  $('fWorms').href = `https://www.marinespecies.org/aphia.php?p=taxlist&tName=${encodeURIComponent((e.taxon || e.nombre).split(' (')[0])}`;
+  marcarVista();
+  mostrarFoto();
+  if (!$('dlg').open) $('dlg').showModal();
+  if (empujar) history.replaceState(null, '', `#${slug(e)}`);
+}
 
-                result.push({
-                    id: result.length + 1,
-                    common_name: main.common_name || '',
-                    scientific_name: main.scientific_name || '',
-                    phylum: main.phylum || '',
-                    class: main.class || '',
-                    detection_method: main.detection_method || '',
-                    confidence: main.confidence || 0,
-                    total_mentions: list.length,
-                    first_timestamp: occurrences.length ? occurrences[0].timestamp : '',
-                    last_timestamp: occurrences.length ? occurrences[occurrences.length - 1].timestamp : '',
-                    all_occurrences: occurrences,
-                    main_thumbnail: mainThumb
-                });
-            }
+function mostrarFoto() {
+  const a = actual.avistajes[foto], n = actual.avistajes.length;
+  const visor = $('visor');
+  visor.querySelector('iframe')?.remove();
+  $('fFoto').hidden = false;
+  $('fFoto').removeAttribute('src'); // que no quede pintada la foto de la ficha anterior mientras carga
+  $('fFoto').src = a.foto || '';
+  $('fFoto').alt = `${actual.nombre} en el minuto ${hms(a.seg)} de la transmisión`;
+  $('fCont').textContent = n > 1 ? `${foto + 1} / ${n}` : hms(a.seg);
+  $('ant').hidden = $('sig').hidden = n < 2;
+  $('fCita').textContent = a.cita ? `“${a.cita}”` : '';
+  $('fNota').textContent = foto === actual.portada && actual.verificada
+    ? 'Foto revisada: se ve el organismo.'
+    : 'Cuadro del momento en que lo nombran. Si no se distingue, mirá el video.';
+  $('fDatos').innerHTML = [
+    [a.depth != null ? `${metros(a.depth)} m` : null, 'profundidad'],
+    [a.temp != null ? `${a.temp.toFixed(1)} °C` : null, 'temperatura'],
+    [hms(a.seg), 'minuto del video'],
+    [n > 1 ? `${n} veces` : null, 'avistada'],
+  ].filter(d => d[0]).map(d => `<div class="dato"><b>${d[0]}</b><span>${d[1]}</span></div>`).join('');
+  document.querySelectorAll('.punto.on').forEach(p => p.classList.remove('on'));
+  document.querySelector(`.punto[data-id="${actual.id}"][data-i="${foto}"]`)?.classList.add('on');
+}
 
-            return result.sort((a, b) => a.id - b.id);
-        }
+function verVideo() {
+  const a = actual.avistajes[foto];
+  $('fFoto').hidden = true;
+  const f = document.createElement('iframe');
+  f.src = `https://www.youtube-nocookie.com/embed/${datos.expedicion.video}?start=${Math.max(a.seg - 3, 0)}&autoplay=1&rel=0`;
+  f.allow = 'autoplay; encrypted-media; fullscreen';
+  f.allowFullscreen = true;
+  f.title = `Video: ${actual.nombre}`;
+  $('visor').prepend(f);
+}
 
-        function initializeApp() {
-            updateStats();
-            setupFilters();
-            setupPhylumTabs();
-            displaySpecies();
-        }
+function marcarVista() {
+  const on = vistas.has(slug(actual));
+  $('laVi').setAttribute('aria-pressed', on);
+  $('laVi').lastChild.textContent = on ? 'La viste' : 'Ya la vi';
+}
 
-        function updateStats() {
-            const species = biodiversityData.species_data;
-            const taxonomy = biodiversityData.taxonomy_data;
-            const unknownSpecies = biodiversityData.unknown_species || [];
+function cerrar() {
+  $('visor').querySelector('iframe')?.remove();
+  $('dlg').close();
+}
 
-            // Calcular estadísticas
-            const totalSpecies = species.length;
-            const totalPhyla = Object.keys(taxonomy).length;
-            const unknownCount = unknownSpecies.length;
+function abrirDesdeUrl() {
+  const s = decodeURIComponent(location.hash.slice(1));
+  const e = s && especies.find(e => slug(e) === s);
+  if (e) abrir(e, e.portada ?? 0, false);
+}
 
-            document.getElementById('totalSpecies').textContent = totalSpecies.toLocaleString();
-            document.getElementById('totalPhyla').textContent = totalPhyla;
-            document.getElementById('unknownSpecies').textContent = unknownCount;
-        }
+const mover = d => { foto = (foto + d + actual.avistajes.length) % actual.avistajes.length; mostrarFoto(); };
 
-        function setupFilters() {
-            // Setup search
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                currentFilters.search = e.target.value.toLowerCase();
-                applyFilters();
-            });
-
-            // Setup phylum filter
-            const phylumFilter = document.getElementById('phylumFilter');
-            const phyla = [...new Set(biodiversityData.species_data.map(s => s.phylum))]
-                .filter(p => p && p !== 'Desconocido')
-                .sort();
-            phyla.forEach(phylum => {
-                const option = document.createElement('option');
-                option.value = phylum;
-                option.textContent = phylum;
-                phylumFilter.appendChild(option);
-            });
-            phylumFilter.addEventListener('change', (e) => {
-                currentFilters.phylum = e.target.value;
-                applyFilters();
-            });
-
-            // Setup method filter
-            document.getElementById('methodFilter').addEventListener('change', (e) => {
-                currentFilters.method = e.target.value;
-                applyFilters();
-            });
-        }
-
-        function setupPhylumTabs() {
-            const tabsContainer = document.getElementById('phylumTabs');
-            const phyla = [...new Set(biodiversityData.species_data.map(s => s.phylum))]
-                .filter(p => p && p !== 'Desconocido')
-                .sort();
-            
-            // Add "All" tab
-            const allTab = document.createElement('div');
-            allTab.className = 'phylum-tab active';
-            allTab.textContent = 'Todos';
-            allTab.onclick = (ev) => selectPhylum('', ev);
-            tabsContainer.appendChild(allTab);
-
-            phyla.forEach(phylum => {
-                const tab = document.createElement('div');
-                tab.className = 'phylum-tab';
-                tab.textContent = phylum;
-                tab.onclick = (ev) => selectPhylum(phylum, ev);
-                tabsContainer.appendChild(tab);
-            });
-        }
-
-        function selectPhylum(phylum, ev) {
-            // Update active tab
-            document.querySelectorAll('.phylum-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            if (ev && ev.target) ev.target.classList.add('active');
-
-            // Update filter
-            currentFilters.phylum = phylum;
-            document.getElementById('phylumFilter').value = phylum;
-            applyFilters();
-        }
-
-        function applyFilters() {
-            filteredSpecies = biodiversityData.species_data.filter(species => {
-                // Excluir por defecto especies con filo desconocido
-                if (species.phylum === 'Desconocido') {
-                    return false;
-                }
-
-                // Search filter
-                if (currentFilters.search && 
-                    !species.common_name.toLowerCase().includes(currentFilters.search) &&
-                    !species.scientific_name.toLowerCase().includes(currentFilters.search)) {
-                    return false;
-                }
-
-                // Phylum filter
-                if (currentFilters.phylum && species.phylum !== currentFilters.phylum) {
-                    return false;
-                }
-
-                // Method filter
-                if (currentFilters.method && species.detection_method !== currentFilters.method) {
-                    return false;
-                }
-
-                return true;
-            });
-
-            displaySpecies();
-        }
-
-        function displaySpecies() {
-            const container = document.getElementById('speciesContainer');
-            
-            if (filteredSpecies.length === 0) {
-                container.innerHTML = '<div class="no-results">🔍 No se encontraron especies con los filtros aplicados</div>';
-                return;
-            }
-
-            const speciesGrid = document.createElement('div');
-            speciesGrid.className = 'species-grid';
-
-            filteredSpecies.forEach(species => {
-                const card = createSpeciesCard(species);
-                speciesGrid.appendChild(card);
-            });
-
-            container.innerHTML = '';
-            container.appendChild(speciesGrid);
-        }
-
-        function createSpeciesCard(species) {
-            const card = document.createElement('div');
-            card.className = 'species-card';
-            card.onclick = () => showSpeciesDetails(species);
-
-            // Crear thumbnail
-            const thumbnail = createThumbnail(species);
-
-            card.innerHTML = `
-                <div class="species-header">
-                    <div class="species-info">
-                        <div class="species-id">#${species.id.toString().padStart(3, '0')}</div>
-                        <div class="species-name">${species.common_name}</div>
-                        ${species.scientific_name ? `<div class="species-scientific">${species.scientific_name}</div>` : ''}
-                    </div>
-                    ${thumbnail}
-                </div>
-                
-                <div class="species-details">
-                    <div class="detail-item">
-                        <div class="detail-label">Filo</div>
-                        <div class="detail-value">${species.phylum}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Clase</div>
-                        <div class="detail-value">${species.class || 'N/A'}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Menciones</div>
-                        <div class="detail-value">${species.total_mentions}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Confianza</div>
-                        <div class="detail-value">${(species.confidence * 100).toFixed(0)}%</div>
-                    </div>
-                </div>
-                
-                <div class="occurrences-info">
-                    <div class="occurrences-count">📸 ${species.all_occurrences.filter(o => o.thumbnail_url).length} fotos disponibles</div>
-                    <div>⏰ Desde ${species.first_timestamp} hasta ${species.last_timestamp}</div>
-                </div>
-            `;
-
-            return card;
-        }
-
-        function createThumbnail(species) {
-            // Usar la URL del servidor si está disponible
-            if (species.main_thumbnail) {
-                return `
-                    <div class="thumbnail-container">
-                        <img src="${species.main_thumbnail}" alt="${species.common_name}" class="thumbnail-image" 
-                             onload="console.log('✅ Imagen cargada:', '${species.main_thumbnail}')"
-                             onerror="console.error('❌ Error cargando imagen:', '${species.main_thumbnail}'); this.parentElement.innerHTML='<div class=\\'thumbnail-placeholder\\'>📷<br>Error de carga</div>'">
-                    </div>
-                `;
-            }
-            
-            // Fallback: mostrar placeholder
-            return `
-                <div class="thumbnail-container">
-                    <div class="thumbnail-placeholder">
-                        📝<br>Sin imagen
-                    </div>
-                </div>
-            `;
-        }
-
-        function showSpeciesDetails(species) {
-            currentSpecies = species;
-            currentImageIndex = 0;
-            
-            const modal = document.getElementById('speciesModal');
-            const modalContent = document.getElementById('modalContent');
-            
-            // Filtrar ocurrencias con fotos
-            const occurrencesWithPhotos = species.all_occurrences.filter(o => o.thumbnail_url);
-            
-            modalContent.innerHTML = `
-                <div class="modal-header">
-                    <div class="modal-species-name">#${species.id.toString().padStart(3, '0')} ${species.common_name}</div>
-                    ${species.scientific_name ? `<div class="modal-species-scientific">${species.scientific_name}</div>` : ''}
-                    <div class="modal-taxonomy">
-                        <div><strong>Filo:</strong> ${species.phylum}</div>
-                        <div><strong>Clase:</strong> ${species.class || 'N/A'}</div>
-                        <div><strong>Método:</strong> ${species.detection_method}</div>
-                        <div><strong>Confianza:</strong> ${(species.confidence * 100).toFixed(0)}%</div>
-                        <div><strong>Total menciones:</strong> ${species.total_mentions}</div>
-                    </div>
-                </div>
-                
-                ${occurrencesWithPhotos.length > 0 ? `
-                    <div class="modal-image-gallery">
-                        <div class="gallery-header">
-                            <h3>📸 Galería de Fotos (${occurrencesWithPhotos.length} fotos)</h3>
-                            <div class="gallery-nav">
-                                <button class="nav-btn" onclick="previousImage()" id="prevBtn">◀ Anterior</button>
-                                <span style="margin: 0 10px;">${currentImageIndex + 1} / ${occurrencesWithPhotos.length}</span>
-                                <button class="nav-btn" onclick="nextImage()" id="nextBtn">Siguiente ▶</button>
-                            </div>
-                        </div>
-                        <div id="currentImageContainer">
-                            <!-- Image will be loaded here -->
-                        </div>
-                    </div>
-                ` : `
-                    <div class="image-placeholder">
-                        📷<br>No hay fotos disponibles para esta especie
-                    </div>
-                `}
-                
-                <div class="occurrences-list">
-                    <h3>📋 Todas las Detecciones (${species.all_occurrences.length})</h3>
-                    ${species.all_occurrences.map((occurrence, index) => `
-                        <div class="occurrence-item">
-                            <div class="occurrence-header">
-                                <span class="occurrence-timestamp">⏰ ${occurrence.timestamp}</span>
-                                <span class="occurrence-confidence">${(occurrence.confidence * 100).toFixed(0)}%</span>
-                            </div>
-                            ${occurrence.context ? `<div class="occurrence-context">${occurrence.context}</div>` : ''}
-                            ${occurrence.additional_info ? `<div class="occurrence-context"><strong>Info:</strong> ${occurrence.additional_info}</div>` : ''}
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            
-            modal.style.display = 'block';
-            
-            // Load first image if available
-            if (occurrencesWithPhotos.length > 0) {
-                loadCurrentImage();
-            }
-        }
-
-        function loadCurrentImage() {
-            const occurrencesWithPhotos = currentSpecies.all_occurrences.filter(o => o.thumbnail_url);
-            if (occurrencesWithPhotos.length === 0) return;
-            
-            const currentOccurrence = occurrencesWithPhotos[currentImageIndex];
-            const container = document.getElementById('currentImageContainer');
-            
-            container.innerHTML = `
-                <img src="${currentOccurrence.thumbnail_url}" alt="Foto ${currentImageIndex + 1}" class="current-image"
-                     onload="console.log('✅ Imagen modal cargada:', '${currentOccurrence.thumbnail_url}')"
-                     onerror="console.error('❌ Error cargando imagen modal:', '${currentOccurrence.thumbnail_url}'); this.parentElement.innerHTML='<div class=\\'image-placeholder\\'>❌ Error cargando imagen<br>${currentOccurrence.timestamp}</div>'">
-            `;
-            
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = currentImageIndex === 0;
-            document.getElementById('nextBtn').disabled = currentImageIndex === occurrencesWithPhotos.length - 1;
-            
-            // Update counter
-            const counter = document.querySelector('.gallery-nav span');
-            if (counter) {
-                counter.textContent = `${currentImageIndex + 1} / ${occurrencesWithPhotos.length}`;
-            }
-        }
-
-        function nextImage() {
-            const occurrencesWithPhotos = currentSpecies.all_occurrences.filter(o => o.thumbnail_url);
-            if (currentImageIndex < occurrencesWithPhotos.length - 1) {
-                currentImageIndex++;
-                loadCurrentImage();
-            }
-        }
-
-        function previousImage() {
-            if (currentImageIndex > 0) {
-                currentImageIndex--;
-                loadCurrentImage();
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('speciesModal').style.display = 'none';
-            currentSpecies = null;
-            currentImageIndex = 0;
-        }
-
-        // Cerrar modal al hacer clic fuera del contenido
-        window.onclick = function(event) {
-            const modal = document.getElementById('speciesModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Navegación con teclado
-        document.addEventListener('keydown', function(event) {
-            if (currentSpecies) {
-                if (event.key === 'Escape') {
-                    closeModal();
-                } else if (event.key === 'ArrowRight') {
-                    nextImage();
-                } else if (event.key === 'ArrowLeft') {
-                    previousImage();
-                }
-            }
-        });
-
-        // Inicializar la aplicación
-        loadBiodiversityData();
-    </script>
+$('grilla').addEventListener('click', ev => {
+  const c = ev.target.closest('.carta');
+  if (c) { const e = especies.find(e => e.id === +c.dataset.id); abrir(e, e.portada ?? 0); }
+});
+$('chips').addEventListener('click', ev => {
+  const c = ev.target.closest('.chip');
+  if (!c) return;
+  filtro.grupo = c.dataset.g;
+  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+  pintar();
+});
+$('q').addEventListener('input', ev => { filtro.q = ev.target.value; pintar(); });
+$('orden').addEventListener('change', ev => { filtro.orden = ev.target.value; pintar(); });
+$('perfil').addEventListener('click', ev => {
+  const p = ev.target.closest('.punto');
+  if (p) abrir(especies.find(e => e.id === +p.dataset.id), +p.dataset.i);
+});
+$('perfil').addEventListener('mousemove', ev => {
+  const p = ev.target.closest('.punto'), g = $('globo');
+  g.style.opacity = p ? 1 : 0;
+  if (p) { g.textContent = p.dataset.txt; g.style.left = ev.clientX + 12 + 'px'; g.style.top = ev.clientY - 34 + 'px'; }
+});
+$('perfil').addEventListener('mouseleave', () => $('globo').style.opacity = 0);
+$('ant').onclick = () => mover(-1);
+$('sig').onclick = () => mover(1);
+$('cerrar').onclick = cerrar;
+$('verVideo').onclick = verVideo;
+$('dlg').addEventListener('click', ev => { if (ev.target === $('dlg')) cerrar(); });
+$('dlg').addEventListener('close', () => { $('visor').querySelector('iframe')?.remove(); history.replaceState(null, '', location.pathname); });
+$('laVi').onclick = () => {
+  const s = slug(actual);
+  vistas.has(s) ? vistas.delete(s) : vistas.add(s);
+  guardarVistas(vistas);
+  marcarVista();
+  pintar();
+  $('progreso').classList.remove('latido'); void $('progreso').offsetWidth; $('progreso').classList.add('latido');
+};
+$('compartir').onclick = async () => {
+  const url = location.href;
+  try {
+    if (navigator.share) await navigator.share({ title: `${actual.nombre} · OceaniDex`, url });
+    else { await navigator.clipboard.writeText(url); $('compartir').lastChild.textContent = 'Link copiado'; setTimeout(() => $('compartir').lastChild.textContent = 'Compartir', 1500); }
+  } catch {}
+};
+document.addEventListener('keydown', ev => {
+  if (!$('dlg').open) { if (ev.key === '/' && document.activeElement !== $('q')) { ev.preventDefault(); $('q').focus(); } return; }
+  if (ev.key === 'ArrowRight') mover(1);
+  if (ev.key === 'ArrowLeft') mover(-1);
+});
+window.addEventListener('hashchange', abrirDesdeUrl);
+cargar();
+</script>
 </body>
-</html> 
+</html>

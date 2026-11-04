@@ -1,0 +1,15 @@
+{
+  "1": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/004653.jpg", "seguro": true, "nota": "coral blando naranja con pólipos abiertos, primer plano, y otro violeta"},
+  "5": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/032829.jpg", "seguro": false, "nota": "anémona rojiza con tentáculos colgando en la pared, chica"},
+  "9": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/100208.jpg", "seguro": true, "nota": "estrella blanca de 5 brazos sobre el fango, chica"},
+  "13": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/013433.jpg", "seguro": false, "nota": "posible camaroncito pálido con antenas sobre la pared, borroso"},
+  "17": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/092610.jpg", "seguro": false, "nota": "colonias plumosas claras junto a centolla; podrían ser hidrozoos"},
+  "21": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/030251.jpg", "seguro": false, "nota": "tubito con algo naranja en la punta, diminuto; anfípodo dudoso"},
+  "25": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/033333.jpg", "seguro": false, "nota": "cangrejito anaranjado bajo una cornisa, oscuro y chico"},
+  "29": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/051435.jpg", "seguro": false, "nota": "puntitos blancos (lepas) sobre patas de una centolla"},
+  "33": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/091856.jpg", "seguro": false, "nota": "bola rosada con pólipos retraídos sobre el fango, lejos"},
+  "37": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/070637.jpg", "seguro": true, "nota": "raya entera nadando sobre el fondo, vista dorsal clara"},
+  "41": {"foto": "D:/repos/OceaniDex/deteccion/cache/candidatas/081528.jpg", "seguro": true, "nota": "concha blanca en forma de colmillo sobre el fango"},
+  "45": {"foto": null, "seguro": false, "nota": "solo la centolla en primer plano; el caprélido no se distingue"},
+  "49": {"foto": null, "seguro": false, "nota": "estrellas y erizos rojos; no se distinguen caracoles"}
+}

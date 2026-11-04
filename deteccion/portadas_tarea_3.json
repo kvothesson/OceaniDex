@@ -1,0 +1,220 @@
+[
+ {
+  "id": 3,
+  "nombre": "coral duro",
+  "taxon": "Scleractinia",
+  "citas": [
+   "lado un caracol, arriba corales duros.",
+   "Y ahí hay dos corales duros abajo."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000618.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000624.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000630.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/000638.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084912.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084918.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084924.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084932.jpg"
+  ]
+ },
+ {
+  "id": 7,
+  "nombre": "coral solitario",
+  "taxon": "Scleractinia",
+  "citas": [
+   "Hay ahí los que están solitos como unos conos son corales duros solitarios."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004759.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004805.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004811.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/004819.jpg"
+  ]
+ },
+ {
+  "id": 11,
+  "nombre": "lepa",
+  "taxon": "Lepas",
+  "citas": [
+   "Son unas lepas, son unos crustáceos",
+   "Esta de la derecha está llena de lepas.",
+   "o lo que sea, no sé qué es, pero nos pareció una lepa esta de ahí."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012015.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012021.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012027.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/012035.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/054911.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/054917.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/054923.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/054931.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075839.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075845.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075851.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/075859.jpg"
+  ]
+ },
+ {
+  "id": 15,
+  "nombre": "coral verde",
+  "taxon": "Anthozoa",
+  "citas": [
+   "Fíjense, atrás de la soga de la aspiradora, hay uno verde. Ese verde no es una planta, es un coral.",
+   "Fíjense que al centa hay un coral verde. Lo podemos confundir con una planta por el color"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014046.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014052.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014058.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/014106.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092838.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092844.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092850.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/092858.jpg"
+  ]
+ },
+ {
+  "id": 19,
+  "nombre": "poliqueto",
+  "taxon": "Polychaeta",
+  "citas": [
+   "Eso, ¿qué es eso que apareció ahí? ... es un poliquetoso.",
+   "todos los tubitos que están viendo ... se corresponden a unos tubitos de los poliquetos",
+   "Esas tiritas que vemos, créanlo o no, son gusanos marinos. Gusanos que están tapados con arena."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022431.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022437.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022443.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/022451.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060240.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060246.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060252.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/060300.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085550.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085556.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085602.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/085610.jpg"
+  ]
+ },
+ {
+  "id": 23,
+  "nombre": "coral",
+  "taxon": "Anthozoa",
+  "citas": [
+   "los dos brócolis distintos, los dos corales que están, uno más rojo y otro más rosa",
+   "la langosta, un coral, un picnónido. Hay algo más blanco que debe ser otro coral",
+   "¿Qué son esos palitos? ... Ah, estos de ahí serán. Sí, esos son corales."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031058.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031104.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031110.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/031118.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040813.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040819.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040825.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/040833.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/103951.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/103957.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/104003.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/104011.jpg"
+  ]
+ },
+ {
+  "id": 27,
+  "nombre": "zoantario",
+  "taxon": "Zoantharia",
+  "citas": [
+   "lo que tenía arriba, que era el color amarillo, eran unos pólipos de hexacorales ... probablemente son zoantarios"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043029.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043035.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043041.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/043049.jpg"
+  ]
+ },
+ {
+  "id": 31,
+  "nombre": "ascidia",
+  "taxon": "Ascidiacea",
+  "citas": [
+   "parecería ser una sidia. A sidia es otro / Claramente está comiendo la sidia."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/055144.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/055150.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/055156.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/055204.jpg"
+  ]
+ },
+ {
+  "id": 35,
+  "nombre": "nudibranquio",
+  "taxon": "Nudibranchia",
+  "citas": [
+   "Eso que estamos viendo es un molusco, es un nudo y branquio.",
+   "Está buenísimo. Esud branqu ... Bran debe comer el coral. Probablemente el violeta."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064621.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064627.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064633.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/064641.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084902.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084908.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084914.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/084922.jpg"
+  ]
+ },
+ {
+  "id": 39,
+  "nombre": "coral bambú",
+  "taxon": "Octocorallia",
+  "citas": [
+   "Es es un bambu coral, ¿no? Ese es un bambu coral.",
+   "El blanco puede ser un bambú. ... que les dice bambu coral."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072359.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072405.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072411.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/072419.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/073631.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/073637.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/073643.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/073651.jpg"
+  ]
+ },
+ {
+  "id": 43,
+  "nombre": "cangrejo",
+  "taxon": "Decapoda",
+  "citas": [
+   "Cangrejito blanco sigue en la aspiradora. La en la punta de la aspiradora,"
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091443.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091449.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091455.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/091503.jpg"
+  ]
+ },
+ {
+  "id": 47,
+  "nombre": "ceriantario",
+  "taxon": "Ceriantharia",
+  "citas": [
+   "Eso negro parece un seriantario, una ... vive dentro de un tubo y se entierra."
+  ],
+  "candidatas": [
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101314.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101320.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101326.jpg",
+   "D:/repos/OceaniDex/deteccion/cache/candidatas/101334.jpg"
+  ]
+ }
+]
