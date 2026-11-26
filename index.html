@@ -3,10 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OceaniDex</title>
-<meta name="description" content="Todo lo que vio el ROV en el cañón submarino de Mar del Plata, con foto, profundidad y el segundo exacto del video.">
+<title>OceaniDex · La fauna que vio el ROV en el cañón de Mar del Plata</title>
+<meta name="description" content="Los 49 organismos que vio el ROV en el cañón submarino de Mar del Plata, a más de 2000 metros, con foto, profundidad y el segundo exacto del video.">
+<link rel="canonical" href="https://kvothesson.com/OceaniDex/">
+<meta property="og:type" content="website">
 <meta property="og:title" content="OceaniDex">
 <meta property="og:description" content="Lo que vio el ROV en el cañón de Mar del Plata, a 2400 metros.">
+<meta property="og:url" content="https://kvothesson.com/OceaniDex/">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Kvothesson">
+<meta property="og:image" content="https://kvothesson.com/OceaniDex/fotos/portada_001.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "OceaniDex",
+      "description": "Catálogo al estilo Pokédex de los organismos que vio el ROV SuBastian en el cañón submarino de Mar del Plata durante la expedición Talud Continental IV (2025), con foto, profundidad, temperatura y el segundo exacto del video de cada avistaje.",
+      "url": "https://kvothesson.com/OceaniDex/",
+      "inLanguage": "es",
+      "isAccessibleForFree": true,
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "author": {"@type": "Organization", "name": "Kvothesson", "url": "https://kvothesson.com/"}
+    },
+    {
+      "@type": "Dataset",
+      "name": "OceaniDex: avistajes del ROV en el cañón de Mar del Plata",
+      "description": "49 organismos y 141 avistajes leídos de la transmisión en vivo de Schmidt Ocean Institute con el CONICET (expedición Talud Continental IV, 31 de julio de 2025), entre 2042 y 2482 metros de profundidad. Cada avistaje tiene segundo del video, foto, profundidad, temperatura y la frase de los científicos.",
+      "url": "https://kvothesson.com/OceaniDex/",
+      "inLanguage": "es",
+      "isAccessibleForFree": true,
+      "spatialCoverage": "Cañón submarino de Mar del Plata, Argentina",
+      "temporalCoverage": "2025-07-31",
+      "distribution": [
+        {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://kvothesson.com/OceaniDex/oceanidex.csv"},
+        {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://kvothesson.com/OceaniDex/oceanidex.json"}
+      ],
+      "author": {"@type": "Organization", "name": "Kvothesson", "url": "https://kvothesson.com/"}
+    }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cpath d='M80 14 137.2 47v66L80 146l-57.2-33V47z' fill='%235ce1ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -137,7 +177,15 @@ svg.ic { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill:
     <span class="progreso" id="progreso"></span>
   </div>
   <div class="chips" id="chips" role="group" aria-label="Grupos"></div>
-  <main class="grilla-esp" id="grilla"></main>
+  <main class="grilla-esp" id="grilla">
+    <section style="grid-column:1/-1;max-width:68ch;line-height:1.6">
+      <h2>Qué es OceaniDex</h2>
+      <p>Una Pokédex de la fauna que vio el ROV SuBastian en el cañón submarino de Mar del Plata, durante la expedición Talud Continental IV de Schmidt Ocean Institute y el CONICET, el 31 de julio de 2025. Junta 49 organismos y 141 avistajes, leídos de lo que dicen los científicos en las 12 horas de la transmisión en vivo, entre 2042 y 2482 metros de profundidad.</p>
+      <p>Cada ficha trae nombre común y científico, un dato curioso, la foto, la profundidad, la temperatura del agua y el segundo exacto del video para verlo vos. Se busca por nombre, se filtra por grupo y se ordena por aparición, por más vistos o por más profundos. En el perfil de la inmersión cada punto es un avistaje.</p>
+      <p>Algunos de los que más aparecen: anémonas, la langosta Thymops birsteini, corales blandos, esponjas, la centolla Paralomis formosa y pulpos. También hay merluza negra, raya, pepino de mar y coral bambú.</p>
+      <p>Es gratis y los datos se bajan en CSV. Para las fichas hace falta JavaScript. Lo hizo <a href="https://kvothesson.com/">Kvothesson</a>.</p>
+    </section>
+  </main>
 
   <footer>
     <div>Transmisión de <a href="https://www.youtube.com/watch?v=Fa-iwwxiDr0">Schmidt Ocean Institute</a> con el CONICET, expedición Talud Continental IV, 2025.
